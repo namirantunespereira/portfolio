@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfolio — Namir Antunes</title>
+  <meta name="description" content="Full-Stack Developer portfolio — projects, technologies, and contact." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Figtree:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <canvas id="stars" aria-hidden="true"></canvas>
+  <div class="animated-gradient" aria-hidden="true"></div>
+
+  <header class="header">
+    <a class="brand" href="#home">Namir.dev</a>
+    <nav class="nav" aria-label="Main">
+      <a href="#projects" data-i18n="nav.projects">Projects</a>
+      <a href="#about" data-i18n="nav.about">About</a>
+      <a href="#contact" data-i18n="nav.contact">Contact</a>
+    </nav>
+    <div class="lang-toggle">
+      <button id="lang-en" class="tab active" aria-label="English">EN</button>
+      <button id="lang-pt" class="tab" aria-label="Português">PT</button>
+    </div>
+  </header>
+
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1><span data-i18n="hero.role">Full‑Stack Developer</span></h1>
+      <p data-i18n="hero.subtitle">I build modern, accessible, and performant applications — from polished front‑ends to scalable back‑ends and APIs.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="#projects" data-i18n="hero.ctaProjects">View projects</a>
+        <a class="btn btn-secondary" href="#contact" data-i18n="hero.ctaContact">Contact me</a>
+      </div>
+      <div class="socials" aria-label="Social links">
+        <a href="https://www.linkedin.com/in/namir-pereira-47689675/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/namirantunespereira" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+    <div class="hero-image" aria-hidden="true">
+      <img class="orb" src="assets/orb.png" alt="decorative orb" />
+      <img class="avatar" src="assets/avatar.png" alt="Namir avatar" />
+    </div>
+  </section>
+
+  <section id="projects" class="section">
+    <div class="section-header">
+      <h2 data-i18n="projects.title">Featured Projects</h2>
+      <p data-i18n="projects.subtitle">Selected work showcasing end‑to‑end delivery, code quality, and delightful UX.</p>
+    </div>
+
+    <div class="grid">
+      <!-- Weather React -->
+      <article class="card glass tilt">
+        <img src="assets/project-weather.jpg" alt="Weather project cover" />
+        <div class="card-body">
+          <h3>Weather Widget (React)</h3>
+          <p data-i18n="card.weather.desc">Weather search by city or geolocation using OpenWeatherMap API.</p>
+          <ul class="tags"><li>React</li><li>API</li><li>OpenWeather</li></ul>
+          <div class="actions">
+            <a class="btn btn-sm btn-primary demo-link" href="projects/react-weather-widget/dist/index.html" data-i18n="actions.demo">Demo</a>
+            <a class="btn btn-sm btn-secondary" href="https://github.com/namirantunespereira/react-weather-widget" target="_blank" rel="noopener" data-i18n="actions.code">Code</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Animated Cards React -->
+      <article class="card glass tilt">
+        <img src="assets/project-cards.jpg" alt="Animated cards cover" />
+        <div class="card-body">
+          <h3>Animated Cards Filter (React)</h3>
+          <p data-i18n="card.cards.desc">Filter cards by category and text with smooth animations.</p>
+          <ul class="tags"><li>React</li><li>framer‑motion</li><li>UX</li></ul>
+          <div class="actions">
+            <a class="btn btn-sm btn-primary demo-link" href="projects/react-animated-cards/dist/index.html" data-i18n="actions.demo">Demo</a>
+            <a class="btn btn-sm btn-secondary" href="https://github.com/namirantunespereira/react-animated-cards" target="_blank" rel="noopener" data-i18n="actions.code">Code</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Neon Calculator -->
+      <article class="card glass tilt">
+        <img src="assets/project-cards.jpg" alt="Neon Calculator cover" />
+        <div class="card-body">
+          <h3>Neon Calculator</h3>
+          <p data-i18n="card.neon.desc">Glowing calculator with keyboard support.</p>
+          <ul class="tags"><li>HTML</li><li>CSS</li><li>JS</li></ul>
+          <div class="actions">
+            <a class="btn btn-sm btn-primary demo-link" href="projects/neon-calculator/index.html" data-i18n="actions.demo">Demo</a>
+            <a class="btn btn-sm btn-secondary" href="https://github.com/namirantunespereira/neon-calculator" target="_blank" rel="noopener" data-i18n="actions.code">Code</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Notes LocalStorage -->
+      <article class="card glass tilt">
+        <img src="assets/project-cards.jpg" alt="Notes app cover" />
+        <div class="card-body">
+          <h3>Notes (LocalStorage)</h3>
+          <p data-i18n="card.notes.desc">Create, edit, delete notes persisted in the browser.</p>
+          <ul class="tags"><li>HTML</li><li>CSS</li><li>JS</li></ul>
+          <div class="actions">
+            <a class="btn btn-sm btn-primary demo-link" href="projects/notes-localstorage/index.html" data-i18n="actions.demo">Demo</a>
+            <a class="btn btn-sm btn-secondary" href="https://github.com/namirantunespereira/notes-localstorage" target="_blank" rel="noopener" data-i18n="actions.code">Code</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Parallax Gallery -->
+      <article class="card glass tilt">
+        <img src="assets/project-cards.jpg" alt="Parallax gallery cover" />
+        <div class="card-body">
+          <h3>Parallax Gallery</h3>
+          <p data-i18n="card.parallax.desc">Layered gallery with motion on scroll and mouse.</p>
+          <ul class="tags"><li>HTML</li><li>CSS</li><li>JS</li></ul>
+          <div class="actions">
+            <a class="btn btn-sm btn-primary demo-link" href="projects/parallax-gallery/index.html" data-i18n="actions.demo">Demo</a>
+            <a class="btn btn-sm btn-secondary" href="https://github.com/namirantunespereira/parallax-gallery" target="_blank" rel="noopener" data-i18n="actions.code">Code</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Color Palette Generator -->
+      <article class="card glass tilt">
+        <img src="assets/project-cards.jpg" alt="Palette generator cover" />
+        <div class="card-body">
+          <h3>Color Palette Generator</h3>
+          <p data-i18n="card.palette.desc">Generate harmonized palettes and copy hex codes.</p>
+          <ul class="tags"><li>HTML</li><li>CSS</li><li>JS</li></ul>
+          <div class="actions">
+            <a class="btn btn-sm btn-primary demo-link" href="projects/color-palette-generator/index.html" data-i18n="actions.demo">Demo</a>
+            <a class="btn btn-sm btn-secondary" href="https://github.com/namirantunespereira/color-palette-generator" target="_blank" rel="noopener" data-i18n="actions.code">Code</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Countdown Timer -->
+      <article class="card glass tilt">
+        <img src="assets/project-cards.jpg" alt="Countdown timer cover" />
+        <div class="card-body">
+          <h3>Countdown Timer</h3>
+          <p data-i18n="card.countdown.desc">Set a target time and run an animated countdown.</p>
+          <ul class="tags"><li>HTML</li><li>CSS</li><li>JS</li></ul>
+          <div class="actions">
+            <a class="btn btn-sm btn-primary demo-link" href="projects/countdown-timer/index.html" data-i18n="actions.demo">Demo</a>
+            <a class="btn btn-sm btn-secondary" href="https://github.com/namirantunespereira/countdown-timer" target="_blank" rel="noopener" data-i18n="actions.code">Code</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section id="about" class="section alt">
+    <div class="section-header">
+      <h2 data-i18n="about.title">About me</h2>
+      <p data-i18n="about.subtitle">I’m a Full‑Stack Developer delivering robust back‑ends and refined front‑ends.</p>
+    </div>
+
+    <div class="about">
+      <div>
+        <h3 data-i18n="about.whoTitle">Who I am</h3>
+        <p data-i18n="about.whoText">I’m <strong>Namir Antunes</strong>, focused on building efficient, accessible, and delightful digital experiences across the stack. I value clean code, testing, performance and maintainability.</p>
+      </div>
+      <div>
+        <h3 data-i18n="about.skillsTitle">Core skills</h3>
+        <ul class="skills">
+          <li>React / Next.js / TypeScript</li>
+          <li>Node.js / Express / NestJS</li>
+          <li>REST / GraphQL / Auth (JWT/Sessions)</li>
+          <li>PostgreSQL / MongoDB / Prisma</li>
+          <li>Docker / CI/CD / GitHub Actions</li>
+          <li data-i18n="about.skillAcc">Accessibility / Performance / SEO basics</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section">
+    <div class="section-header">
+      <h2 data-i18n="contact.title">Contact</h2>
+      <p data-i18n="contact.subtitle">Let’s talk! Fill the form or reach out on LinkedIn/GitHub.</p>
+    </div>
+
+    <form id="contact-form" class="contact-form">
+      <div class="form-row">
+        <label for="name" data-i18n="contact.nameLabel">Name</label>
+        <input id="name" name="name" type="text" placeholder="Your name" required />
+      </div>
+      <div class="form-row">
+        <label for="email" data-i18n="contact.emailLabel">Email</label>
+        <input id="email" name="email" type="email" placeholder="you@email.com" required />
+      </div>
+      <div class="form-row">
+        <label for="message" data-i18n="contact.msgLabel">Message</label>
+        <textarea id="message" name="message" rows="4" placeholder="Write your message..." required></textarea>
+      </div>
+      <div class="form-actions">
+        <button class="btn btn-primary" type="submit" data-i18n="contact.send">Send</button>
+        <span id="form-status" aria-live="polite"></span>
+      </div>
+    </form>
+  </section>
+
+  <footer class="footer">
+    <p>© <span id="year"></span> Namir Antunes — <span data-i18n="footer.allRights">All rights reserved.</span></p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

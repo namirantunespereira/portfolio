@@ -1,7 +1,7 @@
-// Year
+
 document.getElementById('year').textContent = new Date().getFullYear();
 
-// ===== i18n EN/PT =====
+
 const I18N = {
   en: {
     nav: { projects: "Projects", about: "About", contact: "Contact" },
@@ -112,13 +112,10 @@ applyTranslations();
   window.addEventListener('resize',resize); resize(); draw();
 })();
 
-// Parallax & tilt
+
 (function parallax(){ const orb=document.querySelector('.orb'); const avatar=document.querySelector('.avatar'); window.addEventListener('mousemove',e=>{ const cx=innerWidth/2, cy=innerHeight/2; const dx=(e.clientX-cx)/cx, dy=(e.clientY-cy)/cy; if(orb) orb.style.transform=`translate(${dx*10}px,${dy*8}px)`; if(avatar) avatar.style.transform=`translate(${dx*6}px,${dy*5}px)`; }); })();
 (function tiltCards(){ const cards=document.querySelectorAll('.tilt'); cards.forEach(card=>{ card.addEventListener('mousemove',e=>{ const r=card.getBoundingClientRect(); const x=e.clientX-r.left, y=e.clientY-r.top; const rx=((y/r.height)-0.5)*-10, ry=((x/r.width)-0.5)*10; card.style.transform=`perspective(800px) rotateX(${rx}deg) rotateY(${ry}deg)`; }); card.addEventListener('mouseleave',()=>{ card.style.transform='perspective(800px) rotateX(0) rotateY(0)'; }); }); })();
 
-// ===== Contact form -> Email (Formspree recommended) =====
-// 1) Create a form at https://formspree.io (free tier) and get your form ID (e.g., "xknldwgr").
-// 2) Replace YOUR_FORMSPREE_ID below.
 const FORMSPREE_FORM_ID = 'mpqwggnw';
 const FORMSPREE_ENDPOINT = `https://formspree.io/f/mpqwggnw`;
 
@@ -147,11 +144,3 @@ form.addEventListener('submit', async (event) => {
     status.textContent = dict.error;
   }
 });
-
-/* ===== Alternative: EmailJS (client-side) =====
-// Steps:
-// 1) Sign up at https://www.emailjs.com and create a service + template.
-// 2) Add EmailJS SDK: <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-// 3) Initialize: emailjs.init('YOUR_PUBLIC_KEY');
-// 4) Send: emailjs.send('YOUR_SERVICE_ID','YOUR_TEMPLATE_ID',{name, email, message})
-*/

@@ -5,15 +5,12 @@ index 1111111..2222222 100644
 +++ b/index.html
 @@ -80,60 +80,20 @@
  
-   <!-- Seção de Projetos -->
-   <section id="projects" class="section alt">
+     <section id="projects" class="section alt">
 -    <div class="section-header">
 -      <h2 data-i18n="projects.title">Featured Projects</h2>
 -      <p class="muted" data-i18n="projects.subtitle">Selected work showcasing end‑to‑end delivery, code quality, and delightful UX.</p>
 -    </div>
--
--    <!-- === ANTIGOS CARDS FIXOS REMOVIDOS === -->
--
+
 -    <div class="grid">
 -      <!--  aqui ficavam os cards antigos -->
 -    </div>
@@ -21,8 +18,7 @@ index 1111111..2222222 100644
 +      <h2 data-i18n="projects.title">Featured Projects</h2>
 +      <p class="muted" data-i18n="projects.subtitle">Selected work showcasing end‑to‑end delivery, code quality, and delightful UX.</p>
 +    </div>
-+
-+    <!-- === NOVO GRID DINÂMICO === -->
+
 +    <div id="projects-grid" class="grid"></div>
    </section>
  

@@ -1,6 +1,4 @@
-
 document.getElementById('year').textContent = new Date().getFullYear();
-
 
 const I18N = {
   en: {
@@ -104,14 +102,12 @@ document.getElementById('lang-pt').addEventListener('click', () => { currentLang
 function updateQuery(key, value){ const u = new URL(location.href); u.searchParams.set(key, value); return u.pathname + '?' + u.searchParams.toString(); }
 applyTranslations();
 
-// Starfield background
 (function starfield(){
   const canvas=document.getElementById('stars'); const ctx=canvas.getContext('2d'); let w,h,stars;
   function resize(){ w=canvas.width=window.innerWidth; h=canvas.height=window.innerHeight; stars=Array.from({length:Math.floor(w*h/8000)},()=>({x:Math.random()*w,y:Math.random()*h,z:Math.random()*0.8+0.2,s:Math.random()*1.5+0.5})) }
   function draw(){ ctx.clearRect(0,0,w,h); for(const st of stars){ ctx.fillStyle=`rgba(255,255,255,${st.z})`; ctx.beginPath(); ctx.arc(st.x,st.y,st.s,0,Math.PI*2); ctx.fill(); st.x+=0.05*st.z; if(st.x>w) st.x=0; } requestAnimationFrame(draw) }
   window.addEventListener('resize',resize); resize(); draw();
 })();
-
 
 (function parallax(){ const orb=document.querySelector('.orb'); const avatar=document.querySelector('.avatar'); window.addEventListener('mousemove',e=>{ const cx=innerWidth/2, cy=innerHeight/2; const dx=(e.clientX-cx)/cx, dy=(e.clientY-cy)/cy; if(orb) orb.style.transform=`translate(${dx*10}px,${dy*8}px)`; if(avatar) avatar.style.transform=`translate(${dx*6}px,${dy*5}px)`; }); })();
 (function tiltCards(){ const cards=document.querySelectorAll('.tilt'); cards.forEach(card=>{ card.addEventListener('mousemove',e=>{ const r=card.getBoundingClientRect(); const x=e.clientX-r.left, y=e.clientY-r.top; const rx=((y/r.height)-0.5)*-10, ry=((x/r.width)-0.5)*10; card.style.transform=`perspective(800px) rotateX(${rx}deg) rotateY(${ry}deg)`; }); card.addEventListener('mouseleave',()=>{ card.style.transform='perspective(800px) rotateX(0) rotateY(0)'; }); }); })();
@@ -144,3 +140,31 @@ form.addEventListener('submit', async (event) => {
     status.textContent = dict.error;
   }
 });
+
+  if (typeof applyTranslations === 'function') {
+    // We will wrap original applyTranslations by overriding demo-link handling afterwards
+  }
+  // run once at startup too
+  function fixDemoLinks(){
+    document.querySelectorAll('.demo-link').forEach(a => {
+      const href = a.getAttribute('href');
+      try {
+        const url = new URL(href, location.origin);
+        url.searchParams.set('lang', (typeof currentLang!=='undefined'?currentLang:'en'));
+        a.setAttribute('href', url.toString());
+        a.setAttribute('target', '_blank');
+        a.setAttribute('rel', 'noopener noreferrer');
+      } catch(e){}
+    });
+  }
+  const origApply = typeof window!=='undefined' ? window.applyTranslations : undefined;
+  if (origApply) {
+    window.applyTranslations = function(){
+      origApply();
+      fixDemoLinks();
+    }
+  }
+  if (document.readyState==='loading') {
+    document.addEventListener('DOMContentLoaded', fixDemoLinks);
+  } else { fixDemoLinks(); }
+})();

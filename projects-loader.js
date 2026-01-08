@@ -1,5 +1,4 @@
 
-// Carrega projects.json, usa seu i18n EN/PT e cria os cards com lazy-loading
 (async function loadProjects(){
   try {
     const res = await fetch('projects.json');
@@ -17,15 +16,13 @@
       const card = document.createElement('div');
       card.className = 'card tilt reveal';
 
-      // Thumbnail (lazy, com dimensões para evitar CLS)
       const img = document.createElement('img');
       img.src = p.thumbnail;
       img.alt = p.title + ' thumbnail';
       img.loading = 'lazy';
-      img.width = 1200; img.height = 675;
+      img.width = 1200; img.height = 675; // evita CLS
       card.appendChild(img);
 
-      // Corpo
       const body = document.createElement('div');
       body.className = 'card-body';
 
@@ -40,11 +37,7 @@
 
       const tags = document.createElement('ul');
       tags.className = 'tags';
-      p.tech.forEach(t => {
-        const li = document.createElement('li');
-        li.textContent = t;
-        tags.appendChild(li);
-      });
+      p.tech.forEach(t => { const li = document.createElement('li'); li.textContent = t; tags.appendChild(li); });
       body.appendChild(tags);
 
       const actions = document.createElement('div');
@@ -52,17 +45,13 @@
 
       const aDemo = document.createElement('a');
       aDemo.className = 'btn btn-primary demo-link';
-      aDemo.href = p.demo;
-      aDemo.target = '_blank';
-      aDemo.rel = 'noopener noreferrer';
+      aDemo.href = p.demo; aDemo.target = '_blank'; aDemo.rel = 'noopener noreferrer';
       aDemo.textContent = dict?.actions?.demo || 'Demo';
       actions.appendChild(aDemo);
 
       const aCode = document.createElement('a');
       aCode.className = 'btn btn-secondary';
-      aCode.href = p.code;
-      aCode.target = '_blank';
-      aCode.rel = 'noopener noreferrer';
+      aCode.href = p.code; aCode.target = '_blank'; aCode.rel = 'noopener noreferrer';
       aCode.textContent = dict?.actions?.code || 'Code';
       actions.appendChild(aCode);
 
@@ -74,13 +63,8 @@
     grid.innerHTML = '';
     grid.appendChild(frag);
 
-    // animação de entrada
     requestAnimationFrame(() => {
       document.querySelectorAll('.reveal').forEach(el => el.classList.add('show'));
     });
-
-  } catch (e) {
-    console.warn('Could not load projects.json:', e);
-  }
+  } catch (e) { console.warn('Could not load projects.json:', e); }
 })();
-

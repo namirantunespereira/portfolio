@@ -1,0 +1,100 @@
+[
+  {
+    "id": 1,
+    "slug": "react-weather-widget",
+    "title": "React Weather Widget",
+    "i18nKey": "weather",
+    "tech": [
+      "React",
+      "API",
+      "OpenWeather"
+    ],
+    "thumbnail": "images/thumbs/react-weather-widget.webp",
+    "demo": "https://react-weather-widget-livid.vercel.app/",
+    "code": "https://github.com/namirantunespereira/react-weather-widget"
+  },
+  {
+    "id": 2,
+    "slug": "react-animated-cards",
+    "title": "Animated Cards Filter (React)",
+    "i18nKey": "cards",
+    "tech": [
+      "React",
+      "framer-motion",
+      "UX"
+    ],
+    "thumbnail": "images/thumbs/react-animated-cards.webp",
+    "demo": "https://react-animated-cards.vercel.app/",
+    "code": "https://github.com/namirantunespereira/react-animated-cards"
+  },
+  {
+    "id": 3,
+    "slug": "neon-calculator",
+    "title": "Neon Calculator",
+    "i18nKey": "neon",
+    "tech": [
+      "HTML",
+      "CSS",
+      "JS"
+    ],
+    "thumbnail": "images/thumbs/neon-calculator.webp",
+    "demo": "https://neon-calculator-sigma.vercel.app/",
+    "code": "https://github.com/namirantunespereira/neon-calculator"
+  },
+  {
+    "id": 4,
+    "slug": "notes-localstorage",
+    "title": "Notes (LocalStorage)",
+    "i18nKey": "notes",
+    "tech": [
+      "HTML",
+      "CSS",
+      "JS"
+    ],
+    "thumbnail": "images/thumbs/notes-localstorage.webp",
+    "demo": "https://notes-localstorage-sepia.vercel.app/",
+    "code": "https://github.com/namirantunespereira/notes-localstorage"
+  },
+  {
+    "id": 5,
+    "slug": "parallax-gallery",
+    "title": "Parallax Gallery",
+    "i18nKey": "parallax",
+    "tech": [
+      "HTML",
+      "CSS",
+      "JS"
+    ],
+    "thumbnail": "images/thumbs/parallax-gallery.webp",
+    "demo": "https://parallax-gallery-bice.vercel.app/",
+    "code": "https://github.com/namirantunespereira/parallax-gallery"
+  },
+  {
+    "id": 6,
+    "slug": "color-palette-generator",
+    "title": "Color Palette Generator",
+    "i18nKey": "palette",
+    "tech": [
+      "HTML",
+      "CSS",
+      "JS"
+    ],
+    "thumbnail": "images/thumbs/color-palette-generator.webp",
+    "demo": "https://color-palette-generator-five-theta.vercel.app/",
+    "code": "https://github.com/namirantunespereira/color-palette-generator"
+  },
+  {
+    "id": 7,
+    "slug": "countdown-timer",
+    "title": "Countdown Timer",
+    "i18nKey": "countdown",
+    "tech": [
+      "HTML",
+      "CSS",
+      "JS"
+    ],
+    "thumbnail": "images/thumbs/countdown-timer.webp",
+    "demo": "https://countdown-timer-rose-seven.vercel.app/",
+    "code": "https://github.com/namirantunespereira/countdown-timer"
+  }
+]

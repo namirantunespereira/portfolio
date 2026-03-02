@@ -1,57 +1,105 @@
 <template>
   <article class="card" tabindex="0">
-    <img class="thumb" :src="thumbUrl" :alt="p.title + ' thumbnail'" loading="lazy" width="1200" height="675" />
     <div class="inner">
       <header class="top">
-        <h3 class="pixel">{{ p.title }}</h3>
-        <div class="badges" aria-label="Badges">
-          <span class="badge" :data-diff="p.difficulty">{{ p.difficulty }}</span>
-          <span class="badge role">{{ p.role }}</span>
-        </div>
+        <h3 class="pixel">{{ p.item }}</h3>
+        <span class="badge status">{{ p.status }}</span>
       </header>
 
-      <p class="muted">{{ desc }}</p>
+      <p class="destination">📍 Destino: {{ p.destino }}</p>
 
-      <div class="tech" aria-label="Tecnologias">
-        <TechIcon v-for="tch in p.tech" :key="tch" :tech="tch" />
+      <div class="tech-stack">
+        <span v-for="t in p.tech" :key="t" class="tech-tag">{{ t }}</span>
       </div>
 
       <div class="actions">
-        <a class="btn" :href="p.code" target="_blank" rel="noreferrer">{{ t('misc.code') }}</a>
-        <a v-if="p.demo" class="btn secondary" :href="p.demo" target="_blank" rel="noreferrer">{{ t('misc.demo') }}</a>
+        <a :href="p.code" target="_blank" class="btn-code">
+          <span class="pixel">VER CÓDIGO</span>
+        </a>
       </div>
+
+      <button @click="$emit('delete-me', p._id)" class="btn-delete pixel">
+        ABORTAR MISSÃO
+      </button>
+
     </div>
   </article>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
-import type { ProjectJsonItem } from '../types'
-import { useI18n } from '../i18n'
-import TechIcon from './TechIcon.vue'
-
-const { t } = useI18n()
-const props = defineProps<{ p: ProjectJsonItem }>()
-
-const desc = computed(() => t(`projects.card.${props.p.i18nKey}.desc`))
-
-const thumbUrl = computed(() => {
-  const base = import.meta.env.BASE_URL
-  const path = props.p.thumbnail.replace(/^\//, '')
-  return `${base}${path}`
-})
+const props = defineProps<{ p: any }>()
 </script>
 
 <style scoped>
-.thumb{width:100%; height:auto; aspect-ratio:16/9; object-fit:cover; display:block; border-bottom:1px solid rgba(255,255,255,.08)}
-.top{display:flex; align-items:flex-start; justify-content:space-between; gap:10px}
-h3{margin:0; font-size:.85rem}
-.badges{display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end}
-.badge{font-family: var(--pixel); font-size:.62rem; padding:8px 10px; border-radius:999px; border:1px solid var(--outline); background: rgba(10,14,30,.55); color: var(--muted)}
-.badge[data-diff="Easy"]{color: var(--g)}
-.badge[data-diff="Medium"]{color: var(--c)}
-.badge[data-diff="Hard"]{color: var(--gold); border-color: rgba(212,175,55,.55)}
-.badge.role{color: var(--p)}
-.tech{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
-.actions{display:flex; gap:10px; margin-top:14px; flex-wrap:wrap}
+.card {
+  background: rgba(16, 22, 45, 0.5);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 240, 255, 0.1);
+  padding: 24px;
+  border-radius: 16px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: #00f0ff;
+  box-shadow: 0 0 30px rgba(0, 240, 255, 0.2);
+}
+
+.tech-stack {
+  display: flex;
+  gap: 8px;
+  margin: 15px 0;
+  flex-wrap: wrap;
+}
+
+.tech-tag {
+  background: rgba(138, 92, 255, 0.1);
+  border: 1px solid rgba(138, 92, 255, 0.3);
+  color: #c084fc;
+  font-size: 0.7rem;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.btn-code {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 20px;
+  background: transparent;
+  border: 1px solid #00f0ff;
+  color: #00f0ff;
+  text-decoration: none;
+  font-size: 0.75rem;
+  transition: 0.3s;
+}
+
+.btn-code:hover {
+  background: #00f0ff;
+  color: #0a0e1e;
+  box-shadow: 0 0 15px #00f0ff;
+}
+
+.btn-delete {
+  background: transparent;
+  border: 1px solid #ff4d4d; 
+  color: #ff4d4d;
+  padding: 8px;
+  margin-top: 10px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 0.7rem;
+  transition: 0.3s;
+}
+
+.btn-delete:hover {
+  background: #ff4d4d;
+  color: white;
+  box-shadow: 0 0 10px #ff4d4d;
+}
+
+.destination { color: #a0a0ff; font-size: 0.9rem; }
+.badge.status { color: #00ff64; border: 1px solid #00ff64; font-size: 0.7rem; padding: 4px 8px; }
 </style>

@@ -1,25 +1,30 @@
 import { ref } from 'vue'
-import type { ProjectJsonItem } from './types'
+import axios from 'axios'
 
-export function useProjects(){
-  const items = ref<ProjectJsonItem[]>([])
+interface Carga {
+  _id: string; 
+  item: string;
+  destino: string;
+  status: string;
+  tech: string[];
+  code: string;
+}
+
+export function useProjects() {
+  const projects = ref<Carga[]>([]) 
   const loading = ref(true)
-  const error = ref<string | null>(null)
 
-  async function load(){
-    loading.value = true
-    error.value = null
-    try{
-      const url = `${import.meta.env.BASE_URL}projects.json`
-      const res = await fetch(url)
-      if(!res.ok) throw new Error(`HTTP ${res.status}`)
-      items.value = await res.json()
-    }catch(e:any){
-      error.value = e?.message ?? 'Erro ao carregar projects.json'
-    }finally{
+  const fetchProjects = async () => {
+    try {
+      loading.value = true
+      const response = await axios.get('http://localhost:3000/cargas')
+      projects.value = response.data
+    } catch (error) {
+      console.error("Erro na API:", error)
+    } finally {
       loading.value = false
     }
   }
 
-  return { items, loading, error, load }
+  return { projects, fetchProjects, loading }
 }

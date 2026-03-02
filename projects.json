@@ -1,0 +1,118 @@
+[
+  {
+    "id": 1,
+    "slug": "cloud-cargo-api",
+    "title": "Cloud Cargo API",
+    "i18nKey": "cargo",
+    "tech": [
+      "Node.js",
+      "TypeScript",
+      "PostgreSQL",
+      "Docker",
+      "API"
+    ],
+    "difficulty": "Hard",
+    "role": "Back-end",
+    "thumbnail": "images/thumbs/cloud-cargo-api.webp",
+    "demo": "https://cloud-cargo-api.vercel.app/",
+    "code": "https://github.com/namirantunespereira/cloud-cargo-api"
+  },
+  {
+    "id": 2,
+    "slug": "neon-ops-dashboard",
+    "title": "Neon Ops Dashboard",
+    "i18nKey": "ops",
+    "tech": [
+      "Vue.js",
+      "TypeScript",
+      "UX",
+      "API"
+    ],
+    "difficulty": "Medium",
+    "role": "Front-end",
+    "thumbnail": "images/thumbs/neon-ops-dashboard.webp",
+    "demo": "https://neon-ops-dashboard.vercel.app/",
+    "code": "https://github.com/namirantunespereira/neon-ops-dashboard"
+  },
+  {
+    "id": 3,
+    "slug": "data-alchemist-etl",
+    "title": "Data Alchemist ETL",
+    "i18nKey": "etl",
+    "tech": [
+      "Python",
+      "SQL"
+    ],
+    "difficulty": "Medium",
+    "role": "Back-end",
+    "thumbnail": "images/thumbs/data-alchemist-etl.webp",
+    "demo": "https://data-alchemist-etl.vercel.app/",
+    "code": "https://github.com/namirantunespereira/data-alchemist-etl"
+  },
+  {
+    "id": 4,
+    "slug": "spring-orders-boss",
+    "title": "Boss Fight: Spring Orders Service",
+    "i18nKey": "springboss",
+    "tech": [
+      "Spring Boot",
+      "PostgreSQL",
+      "Docker",
+      "API"
+    ],
+    "difficulty": "Hard",
+    "role": "Back-end",
+    "thumbnail": "images/thumbs/spring-orders-boss.webp",
+    "demo": "https://spring-orders-boss.vercel.app/",
+    "code": "https://github.com/namirantunespereira/spring-orders-boss"
+  },
+  {
+    "id": 5,
+    "slug": "terraform-portal",
+    "title": "Terraform Portal",
+    "i18nKey": "iac",
+    "tech": [
+      "Terraform",
+      "AWS",
+      "Azure"
+    ],
+    "difficulty": "Hard",
+    "role": "Full-stack",
+    "thumbnail": "images/thumbs/terraform-portal.webp",
+    "demo": "https://terraform-portal.vercel.app/",
+    "code": "https://github.com/namirantunespereira/terraform-portal"
+  },
+  {
+    "id": 6,
+    "slug": "dungeon-logs",
+    "title": "Dungeon Logs",
+    "i18nKey": "logs",
+    "tech": [
+      "Flask",
+      "MongoDB",
+      "Python",
+      "API"
+    ],
+    "difficulty": "Medium",
+    "role": "Back-end",
+    "thumbnail": "images/thumbs/dungeon-logs.webp",
+    "demo": "https://dungeon-logs.vercel.app/",
+    "code": "https://github.com/namirantunespereira/dungeon-logs"
+  },
+  {
+    "id": 7,
+    "slug": "camunda-quest-orchestrator",
+    "title": "Camunda Quest Orchestrator",
+    "i18nKey": "camunda",
+    "tech": [
+      "Camunda",
+      "Spring Boot",
+      "API"
+    ],
+    "difficulty": "Hard",
+    "role": "Back-end",
+    "thumbnail": "images/thumbs/camunda-quest-orchestrator.webp",
+    "demo": "https://camunda-quest-orchestrator.vercel.app/",
+    "code": "https://github.com/namirantunespereira/camunda-quest-orchestrator"
+  }
+]

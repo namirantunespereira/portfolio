@@ -5,11 +5,10 @@ import { routes } from './router'
 import './styles/global.css'
 
 const router = createRouter({
-  history: createWebHashHistory(),
-  routes,
-  scrollBehavior() {
-    return { top: 0 }
-  }
+  history: createWebHashHistory('/portfolio/'), 
+  routes: routes
 })
 
-createApp(App).use(router).mount('#app')
+const app = createApp(App)
+app.use(router)
+app.mount('#app')

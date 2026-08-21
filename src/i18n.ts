@@ -31,7 +31,8 @@ const dict = {
         iac: { desc: 'Infra como Código com Terraform em AWS/Azure (módulos e boas práticas).' },
         logs: { desc: 'API em Flask com MongoDB para registrar e consultar eventos/logs.' },
         camunda: { desc: 'Orquestração com Camunda + Spring Boot integrando APIs e fluxo de negócio.' },
-        steadywatch: { desc: 'Plataforma full-stack de controle parental: agente Windows em dois processos, API .NET, Postgres e e-mail transacional.' }
+        steadywatch: { desc: 'Plataforma full-stack de controle parental: agente Windows em dois processos, API .NET, Postgres e e-mail transacional.' },
+        radarlog: { desc: 'Torre de controle logística fictícia: agendamento em etapas, aprovação e rastreio público, com estado compartilhado via localStorage.' }
       }
     },
     experience: {
@@ -69,7 +70,8 @@ const dict = {
         iac: { desc: 'Terraform IaC for AWS/Azure provisioning (modules and best practices).' },
         logs: { desc: 'Flask API with MongoDB to store and query events/logs.' },
         camunda: { desc: 'Process orchestration using Camunda + Spring Boot integrating APIs and workflows.' },
-        steadywatch: { desc: 'Full-stack parental monitoring platform: a two-process Windows agent, .NET API, Postgres and transactional email.' }
+        steadywatch: { desc: 'Full-stack parental monitoring platform: a two-process Windows agent, .NET API, Postgres and transactional email.' },
+        radarlog: { desc: 'Fictional logistics control tower: a multi-step scheduling flow, approval panel and public tracker, sharing state through localStorage.' }
       }
     },
     experience: {

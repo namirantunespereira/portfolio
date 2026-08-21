@@ -132,5 +132,22 @@
     "thumbnail": "images/thumbs/steady-watch.png",
     "demo": "https://namirantunespereira.github.io/steady-watch/",
     "code": "https://github.com/namirantunespereira/steady-watch"
+  },
+  {
+    "id": 9,
+    "slug": "radarlog",
+    "title": "RadarLog",
+    "i18nKey": "radarlog",
+    "tech": [
+      "JavaScript",
+      "HTML5",
+      "CSS3",
+      "localStorage"
+    ],
+    "difficulty": "Medium",
+    "role": "Front-end",
+    "thumbnail": "images/thumbs/radarlog.png",
+    "demo": "https://namirantunespereira.github.io/radarlog-demo/",
+    "code": "https://github.com/namirantunespereira/radarlog-demo"
   }
 ]

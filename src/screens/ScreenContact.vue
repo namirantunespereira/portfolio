@@ -4,20 +4,23 @@
     <p class="subtitle">Sinal aberto. Aguardando transmissão...</p>
 
     <div class="contact-grid">
-      <div class="glass-panel form-panel">
+      <div ref="formPanelEl" class="glass-panel form-panel tilt-card">
         <h3 class="neon-text">Enviar Mensagem</h3>
         <form @submit.prevent="sendMessage" class="contact-form">
-          <input type="text" placeholder="Identificação (Seu Nome)" required />
-          <input type="email" placeholder="Frequência de E-mail" required />
-          <textarea rows="5" placeholder="Sua Transmissão..." required></textarea>
-          
-          <button type="submit" class="btn-neon primary pixel">
+          <input v-model="form.name" type="text" placeholder="Identificação (Seu Nome)" required />
+          <input v-model="form.email" type="email" placeholder="Frequência de E-mail" required />
+          <textarea v-model="form.message" rows="5" placeholder="Sua Transmissão..." required></textarea>
+          <input v-model="form.botcheck" type="checkbox" name="botcheck" class="botcheck" tabindex="-1" autocomplete="off" />
+
+          <button type="submit" class="btn-neon primary pixel" :disabled="isSending">
             {{ isSending ? 'ENVIANDO...' : 'TRANSMITIR' }}
           </button>
+
+          <p v-if="sendError" class="send-error">{{ sendError }}</p>
         </form>
       </div>
 
-      <div class="glass-panel links-panel">
+      <div ref="linksPanelEl" class="glass-panel links-panel tilt-card">
         <h3 class="neon-text">Coordenadas</h3>
         
         <div class="links-container">
@@ -39,16 +42,54 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { reactive, ref } from 'vue'
+import { useTilt } from '../composables/useTilt'
 
+// Free Web3Forms access key (web3forms.com) - meant to be public/client-side,
+// rate-limited and honeypot-protected on their end, not a secret.
+const WEB3FORMS_ACCESS_KEY = 'db88c5b2-c0c2-48f4-b149-3ceeeca6c2fa'
+
+const formPanelEl = ref<HTMLElement | null>(null)
+const linksPanelEl = ref<HTMLElement | null>(null)
+useTilt(formPanelEl, 3)
+useTilt(linksPanelEl, 3)
+
+const form = reactive({ name: '', email: '', message: '', botcheck: false })
 const isSending = ref(false)
+const sendError = ref('')
 
-const sendMessage = () => {
+const sendMessage = async () => {
+  if (form.botcheck) return // honeypot tripped - silently drop
   isSending.value = true
-  setTimeout(() => {
-    alert("Transmissão enviada com sucesso! Retorno em breve!")
+  sendError.value = ''
+  try {
+    // application/x-www-form-urlencoded is a CORS "simple request" - no OPTIONS
+    // preflight, unlike a JSON body. Sidesteps proxies/AV software that mangle preflights.
+    const body = new URLSearchParams({
+      access_key: WEB3FORMS_ACCESS_KEY,
+      subject: 'Novo contato pelo portfólio',
+      name: form.name,
+      email: form.email,
+      message: form.message
+    })
+    const response = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded', Accept: 'application/json' },
+      body
+    })
+    const result = await response.json()
+    if (!result.success) throw new Error(result.message || 'Falha no envio')
+
+    alert('Transmissão enviada com sucesso! Retorno em breve!')
+    form.name = ''
+    form.email = ''
+    form.message = ''
+  } catch (err) {
+    sendError.value = 'Falha na transmissão. Tente novamente ou use o e-mail direto ao lado.'
+    console.error('Web3Forms submit failed:', err)
+  } finally {
     isSending.value = false
-  }, 1500)
+  }
 }
 </script>
 
@@ -63,7 +104,8 @@ const sendMessage = () => {
 
 .title-glow {
   text-shadow: 0 0 15px rgba(0, 240, 255, 0.5);
-  font-size: 2.5rem;
+  font-size: clamp(1.4rem, 7vw, 2.5rem);
+  overflow-wrap: break-word;
   margin-bottom: 10px;
 }
 
@@ -174,5 +216,19 @@ input:focus, textarea:focus {
 
 .icon {
   font-size: 1.5rem;
+}
+
+.botcheck {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.send-error {
+  color: #ff4d6d;
+  font-size: 0.85rem;
+  margin: 0;
 }
 </style>

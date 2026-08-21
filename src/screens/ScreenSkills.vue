@@ -3,7 +3,7 @@
     <h1 class="pixel title-glow">Registro de Bordo</h1>
 
     <div class="content-grid">
-      <div class="glass-panel bio">
+      <div ref="bioEl" class="glass-panel bio tilt-card">
         <h3 class="neon-text">Transmissão Recebida...</h3>
         <p>
           Olá, Universo! Sou <strong>Namir</strong>, profissional Full-Stack, com paixão por construir ecossistemas digitais. 
@@ -12,7 +12,7 @@
         </p>
       </div>
 
-      <div class="glass-panel skills">
+      <div ref="skillsEl" class="glass-panel skills tilt-card">
         <h3 class="neon-text">Nível de Energia do Sistema</h3>
 
         <div class="skill" v-for="skill in skills" :key="skill.name">
@@ -31,6 +31,12 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useTilt } from '../composables/useTilt'
+
+const bioEl = ref<HTMLElement | null>(null)
+const skillsEl = ref<HTMLElement | null>(null)
+useTilt(bioEl, 3)
+useTilt(skillsEl, 3)
 
 const skills = ref([
   { name: 'Vue.js / Front-end', level: 90 },
@@ -54,7 +60,8 @@ const skills = ref([
   color: #fff;
   text-shadow: 0 0 15px rgba(0, 240, 255, 0.5);
   margin-bottom: 40px;
-  font-size: 2.5rem;
+  font-size: clamp(1.4rem, 7vw, 2.5rem);
+  overflow-wrap: break-word;
 }
 
 .content-grid {
@@ -79,7 +86,6 @@ const skills = ref([
 }
 
 .glass-panel:hover {
-  transform: translateY(-5px);
   border-color: #00f0ff;
   box-shadow: 0 0 20px rgba(0, 240, 255, 0.1);
 }

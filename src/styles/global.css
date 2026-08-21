@@ -111,3 +111,28 @@ a{color:inherit}
 .xp > div{height:100%;background: linear-gradient(90deg, var(--p), var(--c), var(--g));width: 45%;}
 
 input, textarea{width:100%;padding:12px;border-radius:12px;border:1px solid var(--outline);background: rgba(10,14,30,.55);color: var(--text);outline:none;}
+
+/* Cursor-tracking 3D tilt, applied via src/composables/useTilt.ts. Touch devices (no
+   mousemove to drive it) get the self-running .tilt-card-idle animation instead. */
+.tilt-card{
+  transform-style: preserve-3d;
+  transition: transform 0.15s ease-out, box-shadow 0.15s ease-out;
+  will-change: transform;
+}
+.tilt-card-idle{
+  animation: tilt-idle 9s ease-in-out infinite;
+}
+@keyframes tilt-idle{
+  0%, 100% {
+    transform: perspective(800px) rotateX(1.5deg) rotateY(-2deg);
+    box-shadow: 3px -2px 20px rgba(0, 0, 0, 0.3);
+  }
+  50% {
+    transform: perspective(800px) rotateX(-1.5deg) rotateY(2deg);
+    box-shadow: -3px 2px 20px rgba(0, 0, 0, 0.3);
+  }
+}
+@media (prefers-reduced-motion: reduce){
+  .tilt-card{transition:none !important}
+  .tilt-card-idle{animation:none}
+}

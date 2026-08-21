@@ -1,6 +1,6 @@
 <template>
   <section class="home-screen">
-    <div class="hero-container">
+    <div ref="heroEl" class="hero-container tilt-card">
       <div class="status-badge">
         <span class="dot blinking"></span>
         <span class="pixel">Sinal estabelecido...</span>
@@ -30,9 +30,13 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
+import { useTilt } from '../composables/useTilt'
 
 const fullText = "Olá, eu sou Namir."
 const displayedText = ref("")
+
+const heroEl = ref<HTMLElement | null>(null)
+useTilt(heroEl, 3)
 
 onMounted(() => {
   let i = 0
@@ -89,7 +93,8 @@ onMounted(() => {
 }
 
 .main-title {
-  font-size: 3.5rem;
+  font-size: clamp(1.8rem, 9vw, 3.5rem);
+  overflow-wrap: break-word;
   color: #fff;
   margin: 10px 0;
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
@@ -121,6 +126,11 @@ onMounted(() => {
   letter-spacing: 2px;
   border-radius: 5px;
   transition: all 0.3s ease;
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  .btn-neon { padding: 14px 18px; letter-spacing: 1px; line-height: 1.6; }
 }
 
 .btn-neon.primary {

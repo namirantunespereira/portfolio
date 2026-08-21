@@ -41,7 +41,7 @@ const dict = {
       loot: 'Loot'
     },
     skills: { title: 'Inventário de Skills', subtitle: 'Uma visão rápida do que uso no dia a dia e do que estou evoluindo.', front: 'Front‑end', back: 'Back‑end', data: 'Dados/Automação', next: 'Próximas Missões (roadmap)' },
-    contact: { title: 'Contato', subtitle: 'Vamos conversar? Envie uma mensagem (mock) ou use links.', name: 'Nome', email: 'Email', msg: 'Mensagem', send: 'Enviar', sent: 'Mensagem enviada! (mock)' },
+    contact: { title: 'Contato', subtitle: 'Vamos conversar? Envie uma mensagem ou use os links.', name: 'Nome', email: 'Email', msg: 'Mensagem', send: 'Enviar', sent: 'Mensagem enviada!' },
     misc: { filterTitle: 'Filtro de Missões', filterSubtitle: 'Escolha uma tecnologia para destacar seus projetos.', minigameTitle: 'Mini‑Game: Caça‑Moedas', minigameSubtitle: 'Clique nas moedas para ganhar XP. (Só diversão 😄)', generate: 'Gerar', reset: 'Reset', code: 'Código', demo: 'Demo' }
   },
   en: {
@@ -79,7 +79,7 @@ const dict = {
       loot: 'Loot'
     },
     skills: { title: 'Skill Inventory', subtitle: 'A quick view of what I use daily and what I’m improving.', front: 'Front‑end', back: 'Back‑end', data: 'Data/Automation', next: 'Next Quests (roadmap)' },
-    contact: { title: 'Contact', subtitle: 'Let’s talk! Send a message (mock) or use the links.', name: 'Name', email: 'Email', msg: 'Message', send: 'Send', sent: 'Message sent! (mock)' },
+    contact: { title: 'Contact', subtitle: 'Let’s talk! Send a message or use the links.', name: 'Name', email: 'Email', msg: 'Message', send: 'Send', sent: 'Message sent!' },
     misc: { filterTitle: 'Quest Filter', filterSubtitle: 'Pick a tech to highlight your projects.', minigameTitle: 'Mini‑Game: Coin Hunt', minigameSubtitle: 'Click coins to gain XP. (Just for fun 😄)', generate: 'Spawn', reset: 'Reset', code: 'Code', demo: 'Demo' }
   }
 } as const

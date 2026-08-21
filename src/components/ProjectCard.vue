@@ -1,5 +1,5 @@
 <template>
-  <article class="card" tabindex="0">
+  <article ref="cardEl" class="card tilt-card" tabindex="0">
     <img v-if="p.thumbnail" :src="p.thumbnail" :alt="p.title" class="thumb" loading="lazy" />
 
     <div class="inner">
@@ -31,10 +31,15 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
 import type { DisplayProject } from '../types'
+import { useTilt } from '../composables/useTilt'
 
 defineProps<{ p: DisplayProject }>()
 defineEmits<{ 'delete-me': [id: string] }>()
+
+const cardEl = ref<HTMLElement | null>(null)
+useTilt(cardEl)
 </script>
 
 <style scoped>
@@ -43,13 +48,12 @@ defineEmits<{ 'delete-me': [id: string] }>()
   backdrop-filter: blur(12px);
   border: 1px solid rgba(0, 240, 255, 0.1);
   border-radius: 16px;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
   position: relative;
   overflow: hidden;
 }
 
 .card:hover {
-  transform: translateY(-8px) scale(1.02);
   border-color: #00f0ff;
   box-shadow: 0 0 30px rgba(0, 240, 255, 0.2);
 }

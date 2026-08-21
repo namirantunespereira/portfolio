@@ -113,7 +113,7 @@ const academic = ref([
 
 <style scoped>
 .experience-screen { padding: 40px 20px; max-width: 900px; margin: 0 auto; color: white; }
-.title-glow { text-align: center; text-shadow: 0 0 15px rgba(0, 240, 255, 0.5); font-size: 2.5rem; margin-bottom: 5px; }
+.title-glow { text-align: center; text-shadow: 0 0 15px rgba(0, 240, 255, 0.5); font-size: clamp(1.4rem, 7vw, 2.5rem); overflow-wrap: break-word; margin-bottom: 5px; }
 .subtitle { text-align: center; color: #a0a0ff; margin-bottom: 50px; font-family: monospace; }
 .section-title { font-size: 1.5rem; margin-bottom: 30px; border-bottom: 1px solid rgba(0, 240, 255, 0.2); padding-bottom: 10px; }
 .mt-5 { margin-top: 60px; }

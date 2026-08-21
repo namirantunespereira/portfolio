@@ -22,7 +22,7 @@
         
         <div class="links-container">
           <a href="https://github.com/namirantunespereira" target="_blank" class="contact-link">
-            <span class="icon">💻</span> GitHub da Capitã
+            <span class="icon">💻</span> Perfil no GitHub
           </a>
           
           <a href="https://www.linkedin.com/in/namir-pereira-47689675/" target="_blank" class="contact-link">
@@ -46,7 +46,7 @@ const isSending = ref(false)
 const sendMessage = () => {
   isSending.value = true
   setTimeout(() => {
-    alert("Transmissão enviada com sucesso! A Capitã Namir responderá em breve.")
+    alert("Transmissão enviada com sucesso! Retorno em breve!")
     isSending.value = false
   }, 1500)
 }

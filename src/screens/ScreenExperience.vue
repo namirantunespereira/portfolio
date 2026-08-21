@@ -1,7 +1,7 @@
 <template>
   <section class="experience-screen">
     <h1 class="pixel title-glow">Diário de Bordo</h1>
-    <p class="subtitle">Histórico completo de missões e treinamentos da Capitã Namir.</p>
+    <p class="subtitle">Histórico completo de missões e treinamentos de Namir.</p>
 
     <div class="timeline-container">
       

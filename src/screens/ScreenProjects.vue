@@ -1,17 +1,19 @@
 <template>
   <section class="projects-screen">
     <h1 class="pixel">Monitor de Cargas Estelares</h1>
-    
-    <NewMissionForm @mission-added="fetchProjects" />
+
+    <NewMissionForm @mission-added="addMission" />
 
     <div v-if="loading" class="loading">Sincronizando com a API...</div>
-    
-    <TransitionGroup name="staggered-fade" tag="div" class="projects-grid" appear>
-      <ProjectCard 
-        v-for="(carga, index) in projects" 
-        :key="carga._id"  :p="carga"
-        @delete-me="handleDelete"
-        :style="{ '--delay': index * 0.2 + 's' }" 
+    <div v-else-if="error" class="error">{{ error }}</div>
+
+    <TransitionGroup v-else name="staggered-fade" tag="div" class="projects-grid" appear>
+      <ProjectCard
+        v-for="(item, index) in projects"
+        :key="item.id"
+        :p="item"
+        @delete-me="deleteMission"
+        :style="{ '--delay': index * 0.08 + 's' }"
       />
     </TransitionGroup>
   </section>
@@ -19,24 +21,11 @@
 
 <script setup lang="ts">
 import { onMounted } from 'vue'
-import axios from 'axios'
-import { useProjects } from '../useProjects' 
+import { useProjects } from '../useProjects'
 import ProjectCard from '../components/ProjectCard.vue'
 import NewMissionForm from '../components/NewMissionForm.vue'
 
-const handleDelete = async (id: string) => {
-  if(confirm("Deseja realmente abortar esta missão?")) {
-    try {
-      await axios.delete(`http://localhost:3000/cargas/${id}`)
-      fetchProjects() // Atualiza a lista depois de deletar
-    } catch (error) {
-      console.error("Erro ao deletar:", error)
-      alert("Falha de comunicação ao abortar missão.")
-    }
-  }
-}
-
-const { projects, fetchProjects, loading } = useProjects()
+const { projects, fetchProjects, addMission, deleteMission, loading, error } = useProjects()
 
 onMounted(() => {
   fetchProjects()
@@ -45,10 +34,10 @@ onMounted(() => {
 
 <style scoped>
 .projects-screen { padding: 20px; color: white; }
-.projects-grid { 
-  display: grid; 
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
-  gap: 20px; 
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
+  gap: 20px;
   margin-top: 20px;
 }
 
@@ -67,5 +56,6 @@ onMounted(() => {
   opacity: 0;
   transform: scale(0.5);
 }
-.loading { color: var(--c); font-family: var(--pixel); text-align: center; margin-top: 50px; }
+.loading, .error { color: var(--c); font-family: var(--pixel); text-align: center; margin-top: 50px; }
+.error { color: var(--danger); }
 </style>

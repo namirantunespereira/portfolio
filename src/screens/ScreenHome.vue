@@ -11,7 +11,7 @@
       </h1>
 
       <p class="subtitle">
-        Desenvolvedora Full-Stack & Arquiteta de Soluções Estelares.
+        Desenvolvimento Full-Stack & Arquitetura de Soluções Estelares.
         <br>Transformando linhas de código em galáxias funcionais.
       </p>
 

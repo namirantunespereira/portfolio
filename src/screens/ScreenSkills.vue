@@ -1,12 +1,12 @@
 <template>
   <section class="about-screen">
-    <h1 class="pixel title-glow">Registro da Capitã</h1>
+    <h1 class="pixel title-glow">Registro de Bordo</h1>
 
     <div class="content-grid">
       <div class="glass-panel bio">
         <h3 class="neon-text">Transmissão Recebida...</h3>
         <p>
-          Olá, Universo! Sou <strong>Namir</strong>, uma desenvolvedora Full-Stack apaixonada por construir ecossistemas digitais. 
+          Olá, Universo! Sou <strong>Namir</strong>, profissional Full-Stack, com paixão por construir ecossistemas digitais. 
           <br><br>
           Minha missão é unir o design visual impressionante do Front-end com a lógica robusta e segura do Back-end. Quando não estou programando APIs ou desenhando interfaces, estou explorando novas tecnologias para aprimorar minhas habilidades estelares.
         </p>

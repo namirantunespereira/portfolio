@@ -13,3 +13,26 @@ export type ProjectJsonItem = {
   demo?: string
   code: string
 }
+
+// Unified shape ProjectCard renders, regardless of whether the entry came from the curated
+// public/projects.json (deletable: false) or was added locally via NewMissionForm and is
+// stored only in this visitor's browser (deletable: true).
+export type DisplayProject = {
+  id: string
+  title: string
+  tagline: string
+  tech: string[]
+  badge: string
+  thumbnail?: string
+  demo?: string
+  code?: string
+  deletable: boolean
+}
+
+export type LocalMission = {
+  id: string
+  item: string
+  destino: string
+  tech: string[]
+  code: string
+}

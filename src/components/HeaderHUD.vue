@@ -63,7 +63,17 @@ function toggleLang(){ toggle() }
 .stat{display:flex; flex-direction:column; gap:6px; min-width:150px}
 @media (max-width: 980px){
   .row{flex-direction:column; align-items:flex-start}
+  .nav{width:100%}
   .stats{width:100%; justify-content:space-between}
   .stat{width:100%}
+}
+
+/* Below ~480px there just isn't room for the XP bar and both toggle buttons without
+   overflowing - drop the purely decorative XP readout and keep language + sound compact. */
+@media (max-width: 480px){
+  .stat{display:none}
+  .stats{justify-content:flex-end}
+  .btn{padding:8px 10px}
+  .btn .muted{display:none}
 }
 </style>

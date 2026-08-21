@@ -114,5 +114,23 @@
     "thumbnail": "images/thumbs/camunda-quest-orchestrator.webp",
     "demo": "https://camunda-quest-orchestrator.vercel.app/",
     "code": "https://github.com/namirantunespereira/camunda-quest-orchestrator"
+  },
+  {
+    "id": 8,
+    "slug": "steady-watch",
+    "title": "Steady Watch",
+    "i18nKey": "steadywatch",
+    "tech": [
+      ".NET",
+      "C#",
+      "ASP.NET Core",
+      "PostgreSQL",
+      "Windows Service"
+    ],
+    "difficulty": "Hard",
+    "role": "Full-stack",
+    "thumbnail": "images/thumbs/steady-watch.png",
+    "demo": "https://namirantunespereira.github.io/steady-watch/",
+    "code": "https://github.com/namirantunespereira/steady-watch"
   }
 ]

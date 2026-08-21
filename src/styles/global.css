@@ -111,4 +111,3 @@ a{color:inherit}
 .xp > div{height:100%;background: linear-gradient(90deg, var(--p), var(--c), var(--g));width: 45%;}
 
 input, textarea{width:100%;padding:12px;border-radius:12px;border:1px solid var(--outline);background: rgba(10,14,30,.55);color: var(--text);outline:none;}
-input:focus, textarea:focus{border-color: rgba(0,240,255,.6); box-shadow: 0 0 0 3px rgba(0,240,255,.12)}

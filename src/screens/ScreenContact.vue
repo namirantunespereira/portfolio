@@ -1,39 +1,45 @@
 <template>
   <section class="contact-screen">
-    <h1 class="pixel title-glow">Canal de Comunicação</h1>
-    <p class="subtitle">Sinal aberto. Aguardando transmissão...</p>
+    <p class="eyebrow mono">$ mail --compose</p>
+    <h1>Contato</h1>
+    <p class="subtitle">Vamos conversar sobre um projeto?</p>
 
     <div class="contact-grid">
-      <div ref="formPanelEl" class="glass-panel form-panel tilt-card">
-        <h3 class="neon-text">Enviar Mensagem</h3>
+      <div ref="formPanelEl" class="card form-panel tilt-card">
+        <div class="file-tab">
+          <span class="dot"></span>
+          <span class="filename">message.txt</span>
+        </div>
         <form @submit.prevent="sendMessage" class="contact-form">
-          <input v-model="form.name" type="text" placeholder="Identificação (Seu Nome)" required />
-          <input v-model="form.email" type="email" placeholder="Frequência de E-mail" required />
-          <textarea v-model="form.message" rows="5" placeholder="Sua Transmissão..." required></textarea>
+          <input v-model="form.name" type="text" placeholder="Seu nome" required />
+          <input v-model="form.email" type="email" placeholder="Seu e-mail" required />
+          <textarea v-model="form.message" rows="5" placeholder="Sua mensagem..." required></textarea>
           <input v-model="form.botcheck" type="checkbox" name="botcheck" class="botcheck" tabindex="-1" autocomplete="off" />
 
-          <button type="submit" class="btn-neon primary pixel" :disabled="isSending">
-            {{ isSending ? 'ENVIANDO...' : 'TRANSMITIR' }}
+          <button type="submit" class="btn-send mono" :disabled="isSending">
+            {{ isSending ? 'enviando...' : 'enviar' }}
           </button>
 
           <p v-if="sendError" class="send-error">{{ sendError }}</p>
         </form>
       </div>
 
-      <div ref="linksPanelEl" class="glass-panel links-panel tilt-card">
-        <h3 class="neon-text">Coordenadas</h3>
-        
+      <div ref="linksPanelEl" class="card links-panel tilt-card">
+        <div class="file-tab">
+          <span class="dot"></span>
+          <span class="filename">links.json</span>
+        </div>
         <div class="links-container">
           <a href="https://github.com/namirantunespereira" target="_blank" class="contact-link">
-            <span class="icon">💻</span> Perfil no GitHub
+            <span class="key mono">github</span> namirantunespereira
           </a>
-          
+
           <a href="https://www.linkedin.com/in/namir-pereira-47689675/" target="_blank" class="contact-link">
-            <span class="icon">🌐</span> LinkedIn Profissional
+            <span class="key mono">linkedin</span> namir-pereira
           </a>
-          
+
           <a href="mailto:namirantunespereira@gmail.com" class="contact-link">
-            <span class="icon">✉️</span> E-mail Direto
+            <span class="key mono">email</span> namirantunespereira@gmail.com
           </a>
         </div>
       </div>
@@ -80,12 +86,12 @@ const sendMessage = async () => {
     const result = await response.json()
     if (!result.success) throw new Error(result.message || 'Falha no envio')
 
-    alert('Transmissão enviada com sucesso! Retorno em breve!')
+    alert('Mensagem enviada com sucesso! Retorno em breve.')
     form.name = ''
     form.email = ''
     form.message = ''
   } catch (err) {
-    sendError.value = 'Falha na transmissão. Tente novamente ou use o e-mail direto ao lado.'
+    sendError.value = 'Falha no envio. Tente novamente ou use o e-mail direto ao lado.'
     console.error('Web3Forms submit failed:', err)
   } finally {
     isSending.value = false
@@ -98,124 +104,86 @@ const sendMessage = async () => {
   padding: 40px 20px;
   max-width: 1000px;
   margin: 0 auto;
-  color: white;
+  color: var(--text);
   text-align: center;
 }
 
-.title-glow {
-  text-shadow: 0 0 15px rgba(0, 240, 255, 0.5);
-  font-size: clamp(1.4rem, 7vw, 2.5rem);
-  overflow-wrap: break-word;
-  margin-bottom: 10px;
-}
+.eyebrow { color: var(--faint); font-size: .8rem; margin: 0 0 8px; }
+h1 { margin: 0 0 8px; font-size: 2rem; }
 
 .subtitle {
-  color: #a0a0ff;
+  color: var(--muted);
   margin-bottom: 40px;
-  font-family: monospace;
 }
 
 .contact-grid {
   display: grid;
-  grid-template-columns: 3fr 2fr; 
-  gap: 30px;
+  grid-template-columns: 3fr 2fr;
+  gap: 24px;
   text-align: left;
 }
 
 @media (max-width: 768px) {
   .contact-grid {
-    grid-template-columns: 1fr; 
+    grid-template-columns: 1fr;
   }
 }
 
-.glass-panel {
-  background: rgba(16, 22, 45, 0.5);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(138, 92, 255, 0.3);
-  padding: 30px;
-  border-radius: 15px;
-  transition: transform 0.3s ease;
-}
-
-.glass-panel:hover {
-  border-color: #00f0ff;
-  box-shadow: 0 0 20px rgba(0, 240, 255, 0.1);
-}
-
-.neon-text {
-  color: #00f0ff;
-  margin-bottom: 20px;
-  font-family: var(--pixel), monospace;
-  text-transform: uppercase;
-}
+.card { transition: border-color 0.2s ease; }
+.card:hover { border-color: var(--accent); }
 
 .contact-form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 14px;
+  padding: 22px;
 }
 
-input, textarea {
-  background: rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: white;
-  padding: 15px;
-  border-radius: 8px;
-  font-family: inherit;
-  transition: all 0.3s ease;
-}
-
-input:focus, textarea:focus {
-  outline: none;
-  border-color: #00f0ff;
-  box-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
-}
-
-.btn-neon {
-  padding: 15px;
-  background: transparent;
-  color: #00f0ff;
-  border: 1px solid #00f0ff;
+.btn-send {
+  padding: 13px;
+  background: var(--accent);
+  color: #061224;
+  border: none;
   cursor: pointer;
-  transition: 0.3s;
-  border-radius: 8px;
-  margin-top: 10px;
+  transition: 0.2s;
+  border-radius: 6px;
+  margin-top: 6px;
+  font-weight: 600;
+  font-size: .85rem;
 }
-
-.btn-neon:hover {
-  background: #00f0ff;
-  color: #0a0e1e;
-  box-shadow: 0 0 20px #00f0ff;
-}
+.btn-send:hover { filter: brightness(1.1); }
+.btn-send:disabled { opacity: .6; cursor: default; }
 
 .links-container {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 12px;
+  padding: 22px;
 }
 
 .contact-link {
   display: flex;
-  align-items: center;
-  gap: 15px;
-  padding: 15px;
-  background: rgba(138, 92, 255, 0.1);
-  border: 1px solid rgba(138, 92, 255, 0.3);
-  color: #fff;
+  align-items: baseline;
+  gap: 10px;
+  padding: 13px 15px;
+  background: var(--surface-2);
+  border: 1px solid var(--outline);
+  color: var(--text);
   text-decoration: none;
-  border-radius: 8px;
-  transition: 0.3s;
+  border-radius: 6px;
+  transition: 0.2s;
+  font-size: .92rem;
+}
+
+.contact-link .key {
+  color: var(--accent);
+  font-size: .78rem;
+  flex: none;
 }
 
 .contact-link:hover {
-  background: rgba(138, 92, 255, 0.3);
-  border-color: #8a5cff;
-  transform: translateX(10px); 
-  box-shadow: 0 0 15px rgba(138, 92, 255, 0.4);
-}
-
-.icon {
-  font-size: 1.5rem;
+  border-color: var(--accent);
+  background: var(--surface-3);
 }
 
 .botcheck {
@@ -227,7 +195,7 @@ input:focus, textarea:focus {
 }
 
 .send-error {
-  color: #ff4d6d;
+  color: var(--danger);
   font-size: 0.85rem;
   margin: 0;
 }

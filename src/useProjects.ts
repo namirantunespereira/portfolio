@@ -73,7 +73,7 @@ export function useProjects() {
     const localDisplay: DisplayProject[] = localMissions.value.map(m => ({
       id: m.id,
       title: m.item,
-      tagline: `📍 Destino: ${m.destino}`,
+      tagline: m.destino,
       tech: m.tech,
       badge: 'Embarque',
       code: m.code,

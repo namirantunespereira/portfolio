@@ -13,7 +13,7 @@
     ],
     "difficulty": "Hard",
     "role": "Back-end",
-    "thumbnail": "images/thumbs/cloud-cargo-api.webp",
+    "thumbnail": "images/thumbs/cloud-cargo-api.png",
     "demo": "https://cloud-cargo-api.vercel.app/",
     "code": "https://github.com/namirantunespereira/cloud-cargo-api"
   },
@@ -30,7 +30,7 @@
     ],
     "difficulty": "Medium",
     "role": "Front-end",
-    "thumbnail": "images/thumbs/neon-ops-dashboard.webp",
+    "thumbnail": "images/thumbs/neon-ops-dashboard.png",
     "demo": "https://neon-ops-dashboard.vercel.app/",
     "code": "https://github.com/namirantunespereira/neon-ops-dashboard"
   },
@@ -45,7 +45,7 @@
     ],
     "difficulty": "Medium",
     "role": "Back-end",
-    "thumbnail": "images/thumbs/data-alchemist-etl.webp",
+    "thumbnail": "images/thumbs/data-alchemist-etl.png",
     "demo": "https://data-alchemist-etl.vercel.app/",
     "code": "https://github.com/namirantunespereira/data-alchemist-etl"
   },
@@ -62,7 +62,7 @@
     ],
     "difficulty": "Hard",
     "role": "Back-end",
-    "thumbnail": "images/thumbs/spring-orders-boss.webp",
+    "thumbnail": "images/thumbs/spring-orders-boss.png",
     "demo": "https://spring-orders-boss.vercel.app/",
     "code": "https://github.com/namirantunespereira/spring-orders-boss"
   },
@@ -78,7 +78,7 @@
     ],
     "difficulty": "Hard",
     "role": "Full-stack",
-    "thumbnail": "images/thumbs/terraform-portal.webp",
+    "thumbnail": "images/thumbs/terraform-portal.png",
     "demo": "https://terraform-portal.vercel.app/",
     "code": "https://github.com/namirantunespereira/terraform-portal"
   },
@@ -95,7 +95,7 @@
     ],
     "difficulty": "Medium",
     "role": "Back-end",
-    "thumbnail": "images/thumbs/dungeon-logs.webp",
+    "thumbnail": "images/thumbs/dungeon-logs.png",
     "demo": "https://dungeon-logs.vercel.app/",
     "code": "https://github.com/namirantunespereira/dungeon-logs"
   },
@@ -111,7 +111,7 @@
     ],
     "difficulty": "Hard",
     "role": "Back-end",
-    "thumbnail": "images/thumbs/camunda-quest-orchestrator.webp",
+    "thumbnail": "images/thumbs/camunda-quest-orchestrator.png",
     "demo": "https://camunda-quest-orchestrator.vercel.app/",
     "code": "https://github.com/namirantunespereira/camunda-quest-orchestrator"
   },

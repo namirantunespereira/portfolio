@@ -1,9 +1,5 @@
 <template>
   <div class="app">
-    <div class="cloud-layer back" aria-hidden="true"></div>
-    <div class="cloud-layer mid" aria-hidden="true"></div>
-    <div class="cloud-layer" aria-hidden="true"></div>
-
     <HeaderHUD />
     <main class="container">
       <router-view />

@@ -1,6 +1,7 @@
 <template>
   <section class="projects-screen">
-    <h1 class="pixel">Monitor de Cargas Estelares</h1>
+    <p class="eyebrow mono">$ ls ./projetos</p>
+    <h1>Projetos</h1>
 
     <NewMissionForm @mission-added="addMission" />
 
@@ -33,7 +34,9 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.projects-screen { padding: 20px; color: white; }
+.projects-screen { padding: 20px 20px 60px; color: var(--text); text-align: center; }
+.eyebrow { color: var(--faint); font-size: .8rem; margin: 0 0 8px; }
+h1 { margin: 0 0 24px; font-size: 2rem; }
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
@@ -56,6 +59,6 @@ onMounted(() => {
   opacity: 0;
   transform: scale(0.5);
 }
-.loading, .error { color: var(--c); font-family: var(--pixel); text-align: center; margin-top: 50px; }
+.loading, .error { color: var(--accent); font-family: var(--font-mono); text-align: center; margin-top: 50px; }
 .error { color: var(--danger); }
 </style>

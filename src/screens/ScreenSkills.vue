@@ -1,27 +1,35 @@
 <template>
   <section class="about-screen">
-    <h1 class="pixel title-glow">Registro de Bordo</h1>
+    <p class="eyebrow mono">$ cat about.md</p>
+    <h1>Skills</h1>
 
     <div class="content-grid">
-      <div ref="bioEl" class="glass-panel bio tilt-card">
-        <h3 class="neon-text">Transmissão Recebida...</h3>
+      <div ref="bioEl" class="card bio tilt-card">
+        <h3>Sobre</h3>
         <p>
-          Olá, Universo! Sou <strong>Namir</strong>, profissional Full-Stack, com paixão por construir ecossistemas digitais. 
+          Olá! Sou <strong>Namir</strong>, desenvolvedor full-stack com foco em construir sistemas
+          completos — do banco de dados à interface, passando por infraestrutura e deploy.
           <br><br>
-          Minha missão é unir o design visual impressionante do Front-end com a lógica robusta e segura do Back-end. Quando não estou programando APIs ou desenhando interfaces, estou explorando novas tecnologias para aprimorar minhas habilidades estelares.
+          Gosto de unir um front-end bem cuidado com um back-end robusto e seguro. Quando não estou
+          programando APIs ou desenhando interfaces, estou testando ferramentas ou tecnologias que
+          ainda não usei em produção.
         </p>
       </div>
 
-      <div ref="skillsEl" class="glass-panel skills tilt-card">
-        <h3 class="neon-text">Nível de Energia do Sistema</h3>
-
-        <div class="skill" v-for="skill in skills" :key="skill.name">
-          <div class="skill-info">
-            <span class="skill-name">{{ skill.name }}</span>
-            <span class="skill-level">{{ skill.level }}%</span>
-          </div>
-          <div class="progress-bar">
-            <div class="progress-fill" :style="{ '--target-width': skill.level + '%' }"></div>
+      <div ref="skillsEl" class="card skills tilt-card">
+        <div class="file-tab">
+          <span class="dot"></span>
+          <span class="filename">stack.ts</span>
+        </div>
+        <div class="skills-inner">
+          <div class="skill" v-for="skill in skills" :key="skill.name">
+            <div class="skill-info mono">
+              <span class="skill-name">{{ skill.name }}</span>
+              <span class="skill-level">{{ skill.level }}%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" :style="{ '--target-width': skill.level + '%' }"></div>
+            </div>
           </div>
         </div>
       </div>
@@ -52,84 +60,70 @@ const skills = ref([
   padding: 40px 20px;
   max-width: 1000px;
   margin: 0 auto;
-  color: white;
+  color: var(--text);
 }
 
-.title-glow {
-  text-align: center;
-  color: #fff;
-  text-shadow: 0 0 15px rgba(0, 240, 255, 0.5);
-  margin-bottom: 40px;
-  font-size: clamp(1.4rem, 7vw, 2.5rem);
-  overflow-wrap: break-word;
-}
+.eyebrow { color: var(--faint); font-size: .8rem; margin: 0 0 8px; }
+h1 { margin: 0 0 40px; font-size: 2rem; }
 
 .content-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr; 
-  gap: 30px;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
 }
 
 @media (max-width: 768px) {
   .content-grid {
-    grid-template-columns: 1fr; 
+    grid-template-columns: 1fr;
   }
 }
 
-.glass-panel {
-  background: rgba(16, 22, 45, 0.5);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(138, 92, 255, 0.3);
-  padding: 30px;
-  border-radius: 15px;
-  transition: transform 0.3s ease;
-}
+.card { transition: border-color 0.2s ease; }
+.card:hover { border-color: var(--accent); }
+.card.bio { padding: 26px; }
 
-.glass-panel:hover {
-  border-color: #00f0ff;
-  box-shadow: 0 0 20px rgba(0, 240, 255, 0.1);
-}
-
-.neon-text {
-  color: #00f0ff;
-  margin-bottom: 20px;
-  font-family: var(--pixel), monospace;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+h3 {
+  color: var(--accent);
+  margin: 0 0 18px;
+  font-size: 1.1rem;
 }
 
 p {
   line-height: 1.8;
-  color: #c0c0d0;
+  color: var(--muted);
+  margin: 0;
 }
+
+.skills-inner { padding: 22px 26px; }
 
 .skill {
   margin-bottom: 20px;
 }
+.skill:last-child { margin-bottom: 0; }
 
 .skill-info {
   display: flex;
   justify-content: space-between;
   margin-bottom: 8px;
-  font-size: 0.9rem;
-  font-weight: bold;
+  font-size: 0.82rem;
 }
+.skill-name { color: var(--text); }
+.skill-level { color: var(--faint); }
 
 .progress-bar {
   width: 100%;
-  height: 10px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 5px;
+  height: 8px;
+  background: var(--surface-2);
+  border-radius: 4px;
   overflow: hidden;
-  border: 1px solid #333;
+  border: 1px solid var(--outline);
 }
 
 .progress-fill {
   height: 100%;
-  background: linear-gradient(90deg, #8a5cff, #00f0ff);
+  background: var(--accent);
   width: 0;
-  animation: fillBar 1.5s ease-out forwards; 
-  box-shadow: 0 0 10px #00f0ff;
+  animation: fillBar 1.2s ease-out forwards;
 }
 
 @keyframes fillBar {

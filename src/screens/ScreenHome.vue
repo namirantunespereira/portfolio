@@ -1,28 +1,24 @@
 <template>
   <section class="home-screen">
     <div ref="heroEl" class="hero-container tilt-card">
-      <div class="status-badge">
-        <span class="dot blinking"></span>
-        <span class="pixel">Sinal estabelecido...</span>
+      <div class="term-window">
+        <div class="term-chrome">
+          <span class="tdot r"></span><span class="tdot y"></span><span class="tdot g"></span>
+          <span class="term-title mono">bash — namir@portfolio</span>
+        </div>
+        <div class="term-body mono">
+          <p class="line"><span class="prompt">$</span> whoami</p>
+          <p class="output">{{ displayedText }}<span class="cursor">_</span></p>
+        </div>
       </div>
 
-      <h1 class="main-title">
-        {{ displayedText }}<span class="cursor">_</span>
-      </h1>
-
       <p class="subtitle">
-        Desenvolvimento Full-Stack & Arquitetura de Soluções Estelares.
-        <br>Transformando linhas de código em galáxias funcionais.
+        Desenvolvimento full-stack: arquitetura, backend, front-end e deploy — do primeiro commit ao usuário real.
       </p>
 
       <div class="action-buttons">
-        <router-link to="/projects" class="btn-neon primary pixel">
-          EXPLORAR MISSÕES
-        </router-link>
-        
-        <a href="https://github.com/namirantunespereira" target="_blank" class="btn-neon secondary pixel">
-          ACESSAR GITHUB
-        </a>
+        <router-link to="/projects" class="btn-neon primary">Ver projetos</router-link>
+        <a href="https://github.com/namirantunespereira" target="_blank" class="btn-neon secondary">GitHub</a>
       </div>
     </div>
   </section>
@@ -32,11 +28,11 @@
 import { ref, onMounted } from 'vue'
 import { useTilt } from '../composables/useTilt'
 
-const fullText = "Olá, eu sou Namir."
-const displayedText = ref("")
-
 const heroEl = ref<HTMLElement | null>(null)
 useTilt(heroEl, 3)
+
+const fullText = "Namir — Full-Stack Developer"
+const displayedText = ref("")
 
 onMounted(() => {
   let i = 0
@@ -45,9 +41,9 @@ onMounted(() => {
       displayedText.value += fullText.charAt(i)
       i++
     } else {
-      clearInterval(typeWriter) 
+      clearInterval(typeWriter)
     }
-  }, 120) 
+  }, 55)
 })
 </script>
 
@@ -57,109 +53,85 @@ onMounted(() => {
   justify-content: center;
   align-items: center;
   min-height: 80vh;
-  text-align: center;
   padding: 20px;
 }
 
 .hero-container {
-  background: rgba(16, 22, 45, 0.4);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(138, 92, 255, 0.2);
-  padding: 50px;
-  border-radius: 20px;
-  max-width: 800px;
-  box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  max-width: 640px;
 }
 
-.status-badge {
-  display: inline-flex;
+.term-window {
+  background: var(--surface);
+  border: 1px solid var(--outline);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.45);
+}
+
+.term-chrome {
+  display: flex;
   align-items: center;
-  gap: 10px;
-  background: rgba(0, 255, 100, 0.1);
-  color: #00ff64;
-  padding: 5px 15px;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  margin-bottom: 20px;
-  border: 1px solid rgba(0, 255, 100, 0.3);
+  gap: 8px;
+  padding: 10px 14px;
+  background: var(--surface-2);
+  border-bottom: 1px solid var(--outline);
 }
+.tdot { width: 10px; height: 10px; border-radius: 50%; }
+.tdot.r { background: var(--danger); }
+.tdot.y { background: var(--warn); }
+.tdot.g { background: var(--accent-2); }
+.term-title { margin-left: 8px; font-size: .78rem; color: var(--muted); }
 
-.dot.blinking {
-  width: 8px;
-  height: 8px;
-  background-color: #00ff64;
-  border-radius: 50%;
-  animation: blink 1.5s infinite;
-}
-
-.main-title {
-  font-size: clamp(1.8rem, 9vw, 3.5rem);
-  overflow-wrap: break-word;
-  color: #fff;
-  margin: 10px 0;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-}
-
-.cursor {
-  color: #00f0ff;
-  animation: blink 1s step-end infinite;
-}
+.term-body { padding: 22px 20px 28px; text-align: left; }
+.line { color: var(--muted); font-size: .95rem; margin: 0 0 10px; }
+.prompt { color: var(--accent-2); margin-right: 8px; }
+.output { color: var(--text); font-size: 1.3rem; font-weight: 600; margin: 0; }
+.cursor { color: var(--accent); animation: blink 1s step-end infinite; }
 
 .subtitle {
-  color: #a0a0ff;
-  font-size: 1.2rem;
+  color: var(--muted);
+  font-size: 1.05rem;
   line-height: 1.6;
-  margin-bottom: 40px;
+  margin: 24px 4px 32px;
 }
 
 .action-buttons {
   display: flex;
-  justify-content: center;
-  gap: 20px;
+  justify-content: flex-start;
+  gap: 16px;
   flex-wrap: wrap;
+  margin: 0 4px;
 }
 
 .btn-neon {
-  padding: 15px 30px;
+  padding: 13px 26px;
   text-decoration: none;
   font-size: 0.9rem;
-  letter-spacing: 2px;
-  border-radius: 5px;
-  transition: all 0.3s ease;
-  text-align: center;
-}
-
-@media (max-width: 480px) {
-  .btn-neon { padding: 14px 18px; letter-spacing: 1px; line-height: 1.6; }
+  font-weight: 600;
+  border-radius: 6px;
+  transition: all 0.2s ease;
 }
 
 .btn-neon.primary {
-  background: transparent;
-  color: #00f0ff;
-  border: 1px solid #00f0ff;
-  box-shadow: inset 0 0 10px rgba(0, 240, 255, 0.2);
+  background: var(--accent);
+  color: #061224;
 }
-
-.btn-neon.primary:hover {
-  background: #00f0ff;
-  color: #0a0e1e;
-  box-shadow: 0 0 20px #00f0ff, inset 0 0 10px #00f0ff;
-}
+.btn-neon.primary:hover { filter: brightness(1.1); }
 
 .btn-neon.secondary {
   background: transparent;
-  color: #8a5cff;
-  border: 1px solid #8a5cff;
+  color: var(--text);
+  border: 1px solid var(--outline);
 }
-
-.btn-neon.secondary:hover {
-  background: #8a5cff;
-  color: #fff;
-  box-shadow: 0 0 20px #8a5cff;
-}
+.btn-neon.secondary:hover { border-color: var(--accent); color: var(--accent); }
 
 @keyframes blink {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
+}
+
+@media (max-width: 480px) {
+  .btn-neon { padding: 12px 18px; }
 }
 </style>

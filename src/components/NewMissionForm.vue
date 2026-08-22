@@ -1,18 +1,18 @@
 <template>
   <div class="mission-control">
-    <button @click="isOpen = !isOpen" class="btn-toggle pixel">
-      {{ isOpen ? 'CANCELAR MISSÃO' : '+ NOVA MISSÃO' }}
+    <button @click="isOpen = !isOpen" class="btn-toggle mono">
+      {{ isOpen ? 'cancelar' : '+ adicionar projeto' }}
     </button>
 
     <Transition name="slide">
       <form v-if="isOpen" @submit.prevent="handleSubmit" class="mission-form">
         <div class="input-group">
-          <input v-model="form.item" placeholder="Nome da Carga" required />
-          <input v-model="form.destino" placeholder="Destino (ex: Marte)" required />
-          <input v-model="form.tech" placeholder="Techs (separadas por vírgula)" />
+          <input v-model="form.item" placeholder="Nome do projeto" required />
+          <input v-model="form.destino" placeholder="Descrição curta" required />
+          <input v-model="form.tech" placeholder="Tecnologias (separadas por vírgula)" />
         </div>
-        <button type="submit" class="btn-send pixel">LANÇAR CARGA</button>
-        <p class="hint">Fica salva só neste navegador — é um recurso de demonstração, sem backend.</p>
+        <button type="submit" class="btn-send mono">adicionar</button>
+        <p class="hint">Fica salvo só neste navegador — é um recurso de demonstração, sem backend.</p>
       </form>
     </Transition>
   </div>
@@ -51,24 +51,21 @@ const handleSubmit = () => {
 <style scoped>
 .mission-control { margin-bottom: 30px; text-align: center; }
 .mission-form {
-  background: rgba(16, 22, 45, 0.8);
+  background: var(--surface);
   padding: 20px;
-  border-radius: 12px;
-  border: 1px solid #8a5cff;
+  border-radius: 8px;
+  border: 1px solid var(--outline);
   margin-top: 15px;
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 .input-group { display: flex; gap: 10px; flex-wrap: wrap; }
-input {
-  background: rgba(0,0,0,0.3); border: 1px solid #333;
-  color: white; padding: 10px; border-radius: 4px; flex: 1;
-}
-input:focus { border-color: #00f0ff; outline: none; }
-.btn-toggle { background: #8a5cff; color: white; border: none; padding: 10px 20px; cursor: pointer; border-radius: 4px; }
-.btn-send { background: #00ff64; color: #0a0e1e; border: none; padding: 10px; cursor: pointer; font-weight: bold; border-radius: 4px; }
-.hint { color: #7a86a8; font-size: 0.78rem; margin: 0; text-align: left; }
+input { flex: 1; }
+.btn-toggle { background: var(--surface-2); color: var(--text); border: 1px solid var(--outline); padding: 10px 20px; cursor: pointer; border-radius: 6px; font-size: .85rem; }
+.btn-toggle:hover { border-color: var(--accent); color: var(--accent); }
+.btn-send { background: var(--accent-2); color: #06170d; border: none; padding: 10px; cursor: pointer; font-weight: 600; border-radius: 6px; font-size: .85rem; }
+.hint { color: var(--faint); font-size: 0.78rem; margin: 0; text-align: left; }
 
 .slide-enter-active, .slide-leave-active { transition: all 0.3s ease; }
 .slide-enter-from, .slide-leave-to { opacity: 0; transform: translateY(-20px); }

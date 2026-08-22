@@ -2,9 +2,9 @@
   <header class="hud">
     <div class="container row">
       <div class="brand">
-        <div class="logo pixel">N</div>
+        <div class="logo mono">N</div>
         <div>
-          <div class="pixel title">NAMIR</div>
+          <div class="mono title">namir</div>
           <div class="muted subtitle">{{ t('hud.role') }}</div>
         </div>
       </div>
@@ -18,19 +18,9 @@
       </nav>
 
       <div class="stats">
-        <div class="stat">
-          <div class="pixel">LV 07</div>
-          <div class="xp" aria-label="XP"><div :style="{width: xp+'%'}"></div></div>
-        </div>
-
+        <span class="status-pill mono"><span class="branch-dot"></span>main</span>
         <button class="btn gold" @click="toggleLang" type="button" aria-label="Trocar idioma">
-          <span class="pixel">{{ lang.toUpperCase() }}</span>
-          <span class="muted">PT/EN</span>
-        </button>
-
-        <button class="btn secondary" @click="toggleSound" type="button" :aria-label="t('hud.sound')">
-          <span class="pixel">{{ t('hud.sound') }}</span>
-          <span class="muted">{{ soundOn ? t('hud.on') : t('hud.off') }}</span>
+          <span class="mono">{{ lang.toUpperCase() }}</span>
         </button>
       </div>
     </div>
@@ -38,42 +28,42 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue'
 import { useI18n } from '../i18n'
 
 const { t, toggle, lang } = useI18n()
-const soundOn = ref(false)
-const xp = computed(() => 62)
 
-function toggleSound(){ soundOn.value = !soundOn.value }
 function toggleLang(){ toggle() }
 </script>
 
 <style scoped>
-.hud{position:sticky; top:0; z-index:50; background: rgba(7,11,22,.58); backdrop-filter: blur(10px); border-bottom:1px solid rgba(255,255,255,.08)}
+.hud{position:sticky; top:0; z-index:50; background: rgba(10,14,20,.82); backdrop-filter: blur(10px); border-bottom:1px solid var(--outline)}
 .row{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 0}
 .brand{display:flex; align-items:center; gap:12px}
-.logo{width:42px; height:42px; border-radius:14px; display:grid; place-items:center; background: linear-gradient(135deg, rgba(138,92,255,.35), rgba(0,240,255,.22)); border:1px solid rgba(255,255,255,.10)}
-.title{font-size:.82rem}
-.subtitle{font-size:.86rem}
-.nav{display:flex; gap:10px; flex-wrap:wrap; justify-content:center}
-.navlink{padding:10px 12px; border-radius:12px; border:1px solid transparent; text-decoration:none; color:var(--muted)}
-.navlink.router-link-active{color:var(--text); border-color: rgba(0,240,255,.25); background: rgba(0,240,255,.06)}
+.logo{width:38px; height:38px; border-radius:8px; display:grid; place-items:center; background: var(--surface-2); border:1px solid var(--outline); color:var(--accent); font-weight:600}
+.title{font-size:.95rem; font-weight:600; letter-spacing:.02em}
+.subtitle{font-size:.8rem}
+.nav{display:flex; gap:4px; flex-wrap:wrap; justify-content:center}
+.navlink{
+  padding:8px 12px; border-radius:6px; border:1px solid transparent; text-decoration:none; color:var(--muted);
+  font-family: var(--font-mono); font-size:.82rem; text-transform:lowercase;
+}
+.navlink::before{content:'~/'; opacity:.5}
+.navlink.router-link-active{color:var(--accent); border-color: var(--outline); background: var(--surface-2)}
 .stats{display:flex; align-items:center; gap:10px; flex-wrap:wrap}
-.stat{display:flex; flex-direction:column; gap:6px; min-width:150px}
+.status-pill{
+  display:flex; align-items:center; gap:6px; font-size:.76rem; color:var(--muted);
+  border:1px solid var(--outline); border-radius:999px; padding:6px 12px; white-space:nowrap;
+}
+.branch-dot{width:6px; height:6px; border-radius:50%; background:var(--accent-2); box-shadow:0 0 0 3px rgba(52,211,153,.16)}
+
 @media (max-width: 980px){
   .row{flex-direction:column; align-items:flex-start}
   .nav{width:100%}
   .stats{width:100%; justify-content:space-between}
-  .stat{width:100%}
 }
 
-/* Below ~480px there just isn't room for the XP bar and both toggle buttons without
-   overflowing - drop the purely decorative XP readout and keep language + sound compact. */
 @media (max-width: 480px){
-  .stat{display:none}
-  .stats{justify-content:flex-end}
+  .status-pill{display:none}
   .btn{padding:8px 10px}
-  .btn .muted{display:none}
 }
 </style>

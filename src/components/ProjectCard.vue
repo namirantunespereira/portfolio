@@ -46,8 +46,6 @@ defineEmits<{ 'delete-me': [id: string] }>()
 const cardEl = ref<HTMLElement | null>(null)
 useTilt(cardEl)
 
-// A small cosmetic touch: pick a plausible file extension from the project's
-// stack so each card reads like an open editor tab, not a real build artifact.
 const EXTENSION_BY_TECH: Record<string, string> = {
   '.net': 'cs', 'c#': 'cs', 'asp.net core': 'cs',
   'typescript': 'ts', 'vue.js': 'vue', 'node.js': 'ts',

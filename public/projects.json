@@ -41,12 +41,14 @@
     "i18nKey": "etl",
     "tech": [
       "Python",
-      "SQL"
+      "pandas",
+      "SQLite",
+      "pytest"
     ],
     "difficulty": "Medium",
     "role": "Back-end",
     "thumbnail": "images/thumbs/data-alchemist-etl.png",
-    "demo": "https://data-alchemist-etl.vercel.app/",
+    "demo": "https://namirantunespereira.github.io/data-alchemist-etl/",
     "code": "https://github.com/namirantunespereira/data-alchemist-etl"
   },
   {

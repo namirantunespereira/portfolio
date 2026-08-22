@@ -76,12 +76,13 @@
     "tech": [
       "Terraform",
       "AWS",
-      "Azure"
+      "Lambda",
+      "DynamoDB"
     ],
     "difficulty": "Hard",
     "role": "Full-stack",
     "thumbnail": "images/thumbs/terraform-portal.png",
-    "demo": "https://terraform-portal.vercel.app/",
+    "demo": "https://github.com/namirantunespereira/terraform-portal/actions",
     "code": "https://github.com/namirantunespereira/terraform-portal"
   },
   {

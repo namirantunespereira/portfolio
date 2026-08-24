@@ -107,14 +107,15 @@
     "title": "Camunda Quest Orchestrator",
     "i18nKey": "camunda",
     "tech": [
-      "Camunda",
+      "Java",
       "Spring Boot",
+      "Camunda",
       "API"
     ],
     "difficulty": "Hard",
     "role": "Back-end",
     "thumbnail": "images/thumbs/camunda-quest-orchestrator.png",
-    "demo": "https://camunda-quest-orchestrator.vercel.app/",
+    "demo": "https://camunda-quest-orchestrator.onrender.com/camunda/app/cockpit/",
     "code": "https://github.com/namirantunespereira/camunda-quest-orchestrator"
   },
   {

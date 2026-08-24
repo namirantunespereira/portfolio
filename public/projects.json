@@ -8,13 +8,12 @@
       "Node.js",
       "TypeScript",
       "PostgreSQL",
-      "Docker",
       "API"
     ],
     "difficulty": "Hard",
     "role": "Back-end",
     "thumbnail": "images/thumbs/cloud-cargo-api.png",
-    "demo": "https://cloud-cargo-api.vercel.app/",
+    "demo": "https://cloud-cargo-api.onrender.com/health",
     "code": "https://github.com/namirantunespereira/cloud-cargo-api"
   },
   {
@@ -31,7 +30,7 @@
     "difficulty": "Medium",
     "role": "Front-end",
     "thumbnail": "images/thumbs/neon-ops-dashboard.png",
-    "demo": "https://neon-ops-dashboard.vercel.app/",
+    "demo": "https://namirantunespereira.github.io/neon-ops-dashboard/",
     "code": "https://github.com/namirantunespereira/neon-ops-dashboard"
   },
   {

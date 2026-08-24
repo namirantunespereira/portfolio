@@ -99,7 +99,7 @@
     "difficulty": "Medium",
     "role": "Back-end",
     "thumbnail": "images/thumbs/dungeon-logs.png",
-    "demo": "https://dungeon-logs.vercel.app/",
+    "demo": "https://dungeon-logs.onrender.com/",
     "code": "https://github.com/namirantunespereira/dungeon-logs"
   },
   {

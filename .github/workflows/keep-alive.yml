@@ -10,8 +10,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Ping cloud-cargo-api
-        run: curl -s -o /dev/null -w "cloud-cargo-api: %{http_code}\n" --max-time 60 https://cloud-cargo-api.onrender.com/health || true
+        continue-on-error: true
+        run: |
+          curl -s -o /dev/null -w 'cloud-cargo-api: %{http_code}\n' --max-time 60 https://cloud-cargo-api.onrender.com/health
+
       - name: Ping camunda-quest-orchestrator
-        run: curl -s -o /dev/null -w "camunda-quest-orchestrator: %{http_code}\n" --max-time 60 https://camunda-quest-orchestrator.onrender.com/actuator/health || true
+        continue-on-error: true
+        run: |
+          curl -s -o /dev/null -w 'camunda-quest-orchestrator: %{http_code}\n' --max-time 60 https://camunda-quest-orchestrator.onrender.com/actuator/health
+
       - name: Ping spring-orders-boss
-        run: curl -s -o /dev/null -w "spring-orders-boss: %{http_code}\n" --max-time 60 https://spring-orders-boss.onrender.com/actuator/health || true
+        continue-on-error: true
+        run: |
+          curl -s -o /dev/null -w 'spring-orders-boss: %{http_code}\n' --max-time 60 https://spring-orders-boss.onrender.com/actuator/health

@@ -13,7 +13,7 @@
     "difficulty": "Hard",
     "role": "Back-end",
     "thumbnail": "images/thumbs/cloud-cargo-api.png",
-    "demo": "https://cloud-cargo-api.onrender.com/health",
+    "demo": "https://cloud-cargo-api.onrender.com/",
     "code": "https://github.com/namirantunespereira/cloud-cargo-api"
   },
   {
@@ -56,15 +56,15 @@
     "title": "Boss Fight: Spring Orders Service",
     "i18nKey": "springboss",
     "tech": [
+      "Java",
       "Spring Boot",
-      "PostgreSQL",
       "Docker",
       "API"
     ],
     "difficulty": "Hard",
     "role": "Back-end",
     "thumbnail": "images/thumbs/spring-orders-boss.png",
-    "demo": "https://spring-orders-boss.vercel.app/",
+    "demo": "https://spring-orders-boss.onrender.com/",
     "code": "https://github.com/namirantunespereira/spring-orders-boss"
   },
   {

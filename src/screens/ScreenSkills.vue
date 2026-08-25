@@ -7,12 +7,13 @@
       <div ref="bioEl" class="card bio tilt-card">
         <h3>Sobre</h3>
         <p>
-          Olá! Sou <strong>Namir</strong>, desenvolvedor full-stack com foco em construir sistemas
-          completos — do banco de dados à interface, passando por infraestrutura e deploy.
+          Olá! Sou <strong>Namir</strong>, desenvolvedor full-stack com quase uma década passando
+          por suporte, infraestrutura e desenvolvimento — hoje construindo sistemas completos, do
+          banco de dados à interface, passando por infraestrutura e deploy.
           <br><br>
-          Gosto de unir um front-end bem cuidado com um back-end robusto e seguro. Quando não estou
-          programando APIs ou desenhando interfaces, estou testando ferramentas ou tecnologias que
-          ainda não usei em produção.
+          Já passei por ERPs fiscais em Delphi, APIs em Node.js e Spring Boot, dashboards em Vue e
+          React, e infraestrutura como código na AWS e Azure. Gosto de entender o problema de
+          ponta a ponta antes de escrever a primeira linha.
         </p>
       </div>
 
@@ -22,16 +23,19 @@
           <span class="filename">stack.ts</span>
         </div>
         <div class="skills-inner">
-          <div class="skill" v-for="skill in skills" :key="skill.name">
-            <div class="skill-info mono">
+          <div class="skill-group" v-for="group in skillGroups" :key="group.name">
+            <p class="group-name mono">{{ group.name }}</p>
+            <div class="skill" v-for="skill in group.skills" :key="skill.name">
               <span class="skill-name">{{ skill.name }}</span>
-              <span class="skill-level">{{ skill.level }}%</span>
-            </div>
-            <div class="progress-bar">
-              <div class="progress-fill" :style="{ '--target-width': skill.level + '%' }"></div>
+              <span class="skill-level mono" :class="`level--${skill.level}`">{{ levelLabel[skill.level] }}</span>
             </div>
           </div>
         </div>
+        <p class="legend mono">
+          <span class="level--production">●</span> produção
+          <span class="level--practice">●</span> em projetos reais
+          <span class="level--exploring">●</span> explorando
+        </p>
       </div>
     </div>
   </section>
@@ -46,12 +50,56 @@ const skillsEl = ref<HTMLElement | null>(null)
 useTilt(bioEl, 3)
 useTilt(skillsEl, 3)
 
-const skills = ref([
-  { name: 'Vue.js / Front-end', level: 90 },
-  { name: 'Node.js / Express', level: 85 },
-  { name: 'TypeScript', level: 80 },
-  { name: 'MongoDB / Banco de Dados', level: 75 },
-  { name: 'Git & GitHub', level: 85 }
+type SkillLevel = 'production' | 'practice' | 'exploring'
+
+const levelLabel: Record<SkillLevel, string> = {
+  production: 'produção',
+  practice: 'projeto real',
+  exploring: 'explorando'
+}
+
+const skillGroups = ref<{ name: string; skills: { name: string; level: SkillLevel }[] }[]>([
+  {
+    name: 'Back-end',
+    skills: [
+      { name: 'Delphi', level: 'production' },
+      { name: 'C# / .NET / EF Core', level: 'production' },
+      { name: 'Java / Spring Boot', level: 'production' },
+      { name: 'Node.js / Express', level: 'production' },
+      { name: 'Python', level: 'production' },
+      { name: 'PHP', level: 'practice' },
+      { name: 'Camunda (BPM)', level: 'practice' }
+    ]
+  },
+  {
+    name: 'Front-end',
+    skills: [
+      { name: 'Vue.js', level: 'production' },
+      { name: 'React', level: 'production' },
+      { name: 'TypeScript', level: 'production' },
+      { name: 'Angular', level: 'practice' }
+    ]
+  },
+  {
+    name: 'Dados & Infra',
+    skills: [
+      { name: 'PostgreSQL', level: 'production' },
+      { name: 'SQL Server / Oracle', level: 'production' },
+      { name: 'Docker', level: 'production' },
+      { name: 'Terraform / IaC', level: 'production' },
+      { name: 'MongoDB', level: 'practice' },
+      { name: 'Firebase', level: 'practice' }
+    ]
+  },
+  {
+    name: 'Ferramentas & DevOps',
+    skills: [
+      { name: 'Git & GitHub', level: 'production' },
+      { name: 'GitHub Actions (CI/CD)', level: 'production' },
+      { name: 'Linux', level: 'production' },
+      { name: 'PowerShell', level: 'practice' }
+    ]
+  }
 ])
 </script>
 
@@ -69,6 +117,7 @@ h1 { margin: 0 0 40px; font-size: 2rem; }
 .content-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  align-items: start;
   gap: 24px;
 }
 
@@ -96,39 +145,52 @@ p {
 
 .skills-inner { padding: 22px 26px; }
 
-.skill {
-  margin-bottom: 20px;
-}
-.skill:last-child { margin-bottom: 0; }
+.skill-group { margin-bottom: 22px; }
+.skill-group:last-child { margin-bottom: 0; }
 
-.skill-info {
+.group-name {
+  color: var(--faint);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin: 0 0 10px;
+}
+
+.skill {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 8px;
-  font-size: 0.82rem;
+  align-items: center;
+  padding: 6px 0;
+  font-size: 0.88rem;
+  border-bottom: 1px solid var(--outline);
 }
-.skill-name { color: var(--text); }
-.skill-level { color: var(--faint); }
+.skill:last-child { border-bottom: none; }
 
-.progress-bar {
-  width: 100%;
-  height: 8px;
-  background: var(--surface-2);
-  border-radius: 4px;
-  overflow: hidden;
+.skill-name { color: var(--text); }
+
+.skill-level {
+  font-size: 0.72rem;
+  padding: 2px 8px;
+  border-radius: 999px;
   border: 1px solid var(--outline);
 }
 
-.progress-fill {
-  height: 100%;
-  background: var(--accent);
-  width: 0;
-  animation: fillBar 1.2s ease-out forwards;
-}
+.level--production { color: var(--accent-2); border-color: var(--accent-2); }
+.level--practice { color: var(--accent); border-color: var(--accent); }
+.level--exploring { color: var(--warn); border-color: var(--warn); }
 
-@keyframes fillBar {
-  to {
-    width: var(--target-width);
-  }
+.legend {
+  padding: 12px 26px 20px;
+  margin: 0;
+  font-size: 0.72rem;
+  color: var(--faint);
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.legend span[class^="level--"] {
+  border: none;
+  padding: 0;
+  margin-right: 4px;
 }
 </style>

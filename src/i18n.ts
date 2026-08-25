@@ -12,10 +12,10 @@ const dict = {
     projects: {
       error: 'Não foi possível carregar projects.json',
       card: {
-        cargo: { desc: 'API REST para logística/cargas com Node + TypeScript, PostgreSQL e Docker.' },
+        cargo: { desc: 'API REST para logística/cargas com Node + TypeScript e PostgreSQL.' },
         ops: { desc: 'Dashboard em Vue + TypeScript com foco em UX e consumo de API.' },
         etl: { desc: 'Pipeline em Python para extração/limpeza e consultas SQL com relatórios.' },
-        springboss: { desc: 'Serviço Spring Boot com endpoints REST, PostgreSQL e ambiente Docker.' },
+        springboss: { desc: 'Serviço Spring Boot com endpoints REST; concorrência segura no banco garante que o HP do boss nunca fica inconsistente entre ataques simultâneos.' },
         iac: { desc: 'Infraestrutura como código na AWS com Terraform: módulos para frontend estático, API serverless e banco, com plano validado em CI a cada push.' },
         logs: { desc: 'API em Flask com MongoDB para registrar e consultar eventos/logs.' },
         camunda: { desc: 'Orquestração com Camunda + Spring Boot integrando APIs e fluxo de negócio.' },
@@ -30,10 +30,10 @@ const dict = {
     projects: {
       error: 'Could not load projects.json',
       card: {
-        cargo: { desc: 'Logistics REST API with Node + TypeScript, PostgreSQL and Docker.' },
+        cargo: { desc: 'Logistics REST API with Node + TypeScript and PostgreSQL.' },
         ops: { desc: 'Vue + TypeScript dashboard focused on UX and API consumption.' },
         etl: { desc: 'Python pipeline for extraction/cleaning and SQL querying with reports.' },
-        springboss: { desc: 'Spring Boot REST service with PostgreSQL integration and Docker setup.' },
+        springboss: { desc: 'Spring Boot REST service; safe database concurrency ensures a boss\'s HP never goes inconsistent across simultaneous attacks.' },
         iac: { desc: 'AWS infrastructure as code with Terraform: modules for a static frontend, a serverless API and a database, with the plan validated in CI on every push.' },
         logs: { desc: 'Flask API with MongoDB to store and query events/logs.' },
         camunda: { desc: 'Process orchestration using Camunda + Spring Boot integrating APIs and workflows.' },
